@@ -23,3 +23,17 @@
    <script src="assets/js/pages/tui-charts.init.js"></script>
 
    <script src="assets/js/app.js"></script>
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <?php if (isset($_SESSION['status_title'])) {
+
+   ?>
+      <script>
+         swal({
+            title: '<?php echo $_SESSION['status_title']; ?>',
+            text: '<?php echo $_SESSION['status_text']; ?>',
+            icon: '<?php echo $_SESSION['status_code']; ?>',
+            button: " OK",
+         });
+      </script>
+   <?php unset($_SESSION['status_title']);
+   } ?>
