@@ -24,7 +24,7 @@
 
    <script src="assets/js/app.js"></script>
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <?php if (isset($_SESSION['status_title'])) {
+   <?php if (isset($_SESSION['status_text'])) {
 
    ?>
       <script>

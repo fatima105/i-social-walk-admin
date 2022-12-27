@@ -1,4 +1,4 @@
-<?php include('include/connection.php'); ?><header id="page-topbar" class="isvertical-topbar">
+<header id="page-topbar" class="isvertical-topbar">
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
@@ -157,7 +157,7 @@
                     <a class="dropdown-item d-flex align-items-center" href="settings.php"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-2"></i> <span class="align-middle me-3">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.php"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span class="align-middle">Logout</span></a>
+                    <a class="dropdown-item" href="logout.php"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span class="align-middle">Logout</span></a>
                 </div>
             </div>
         </div>
