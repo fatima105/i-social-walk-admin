@@ -6,7 +6,7 @@
     <div id="layout-wrapper">
         <?php include('include/header.php'); ?>
 
-
+        <?php include('include/connection.php'); ?>
         <div class="vertical-menu">
 
             <!-- LOGO -->
@@ -76,27 +76,25 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+
                                                     <?php
-                                                    for ($i = 0; $i <= 10; $i++) { ?>
-
+                                                    $sql1 = "SELECT * FROM users  ";
+                                                    $result1 = mysqli_query($conn, $sql1);
+                                                    while ($row = mysqli_fetch_assoc($result1)) {
+                                                        $id = $row['id'];
+                                                    ?>
                                                         <tr>
-
-                                                            <td>Silene Oliveira</td>
-                                                            <td>SileneOliveira@gmail.com</td>
-                                                            <td style="width: 190px;">
+                                                            <td> <?php echo $row['first_name'] . '' . $row['last_name']; ?></td>
+                                                            <td> <?php echo $row['email']; ?></td>
+                                                            <td>
                                                                 <div class="d-flex align-items-center">
                                                                     <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div class="badge badge-soft-success font-size-12"> Mi Band 6</div>
+                                                                <div class="badge badge-soft-success font-size-12"> <?php echo $row['active_watch']; ?></div>
                                                             </td>
-                                                            <td>
-                                                                30 Dec,2021
-                                                            </td>
-
-
+                                                            <td> <?php echo $row['created_at']; ?></td>
                                                             <td>
                                                                 <div class="dropdown">
                                                                     <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
@@ -105,45 +103,13 @@
 
                                                                     <div class="dropdown-menu dropdown-menu-end">
 
-                                                                        <a href="usersview.php" class="dropdown-item">view</a>
+                                                                        <a href="usersview.php?id=<?php echo $id; ?>" class="dropdown-item">view</a>
 
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                        </tr>
-                                                        <tr>
 
-                                                            <td>HoYeon Jung</td>
-                                                            <td>HoYeonJung@gmail.com</td>
-                                                            <td style="width: 190px;">
-                                                                <div class="d-flex align-items-center">
-                                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="badge badge-soft-warning font-size-12"> Apple Watch Series 8</div>
-                                                            </td>
-                                                            <td>
-                                                                30 Oct,2021
-                                                            </td>
-
-                                                            <td>
-                                                                <div class="dropdown">
-                                                                    <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                                    </a>
-
-                                                                    <div class="dropdown-menu dropdown-menu-end">
-
-                                                                        <a class="dropdown-item" href="usersview.php">view</a>
-
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
+                                                        <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>

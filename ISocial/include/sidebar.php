@@ -19,7 +19,7 @@
 
 
         <li>
-            <a href="index.php">
+            <a href="users.php">
                 <i class="bx bx-user-pin icon nav-icon"></i>
                 <span class="menu-item" data-key="t-calendar">Users</span>
             </a>

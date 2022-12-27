@@ -2,10 +2,22 @@
 <html lang="en">
 <?php include('include/scripts.php'); ?>
 
+<?php include('include/connection.php'); ?>
+
 <body>
     <div id="layout-wrapper">
         <?php include('include/header.php'); ?>
-
+        <?php $userid = $_GET['id'];
+        $sql = "SELECT * FROM users where id='$userid'";
+        $query = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($query)) {
+            $first_name = $row['first_name'];
+            $last_name = $row['last_name'];
+            $email = $row['email'];
+            $phoneno = $row['phoneno'];
+            $device_token = $row['device_token'];
+            $active_watch = $row['active_watch'];
+        } ?>
 
         <div class="vertical-menu">
 
@@ -59,7 +71,7 @@
 
                                                     <div class="card">
                                                         <div class="card-header">
-                                                            <h3 class="card-title mb-0 text-center">User Profile</h4>
+                                                            <h3 class="card-title mb-0 text-center">User Profile </h4>
                                                         </div>
                                                         <div class="card-body">
 
@@ -79,7 +91,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">User Name</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            John
+                                                                            <?php echo $first_name . ' ' . $last_name; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -91,7 +103,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold"> Email</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            John@gmail.com
+                                                                            <?php echo $email; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -102,7 +114,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">Phone No</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            0332-2943034
+                                                                            <?php echo $phoneno; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -113,7 +125,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">Device Token</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            3212345
+                                                                            <?php echo $device_token; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -125,7 +137,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold"> Device Connected</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12"> Mi Band 6</div>
+                                                                            <div class="badge badge-soft-success font-size-12 p-4 "> <?php echo $active_watch; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -189,79 +201,59 @@
                                                     <th>Image </th>
                                                     <th>Privacy</th>
                                                     <th>Created at</th>
-                                                    <th>Status</th>
+                                                    <th>Group_visibility</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                for ($i = 0; $i <= 5; $i++) { ?>
+                                                $sql = "SELECT *
+                                                FROM groups
+                                                INNER JOIN group_member ON  groups.id = group_member.group_id where user_id='$userid';";
+                                                $query = mysqli_query($conn, $sql);
+                                                if (mysqli_num_rows($query) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($query)) { ?>
+                                                        <?php $row['group_id']; ?>
+                                                        <tr>
 
-                                                    <tr>
-
-                                                        <td>Silene Oliveira</td>
-                                                        <td style="width: 190px;">
-                                                            <div class="d-flex align-items-center">
-                                                                <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-soft-danger font-size-12"> Private</div>
-                                                        </td>
-                                                        <td>
-                                                            30 Dec,2021
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-soft-success font-size-12">Member </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-horizontal"></i>
-                                                                </a>
-
-                                                                <div class="dropdown-menu dropdown-menu-end">
-
-                                                                    <a href="viewgroup.php" class="dropdown-item" href="#">view</a>
-
+                                                            <td> <?php echo $row['name']; ?>
+                                                            <td style="width: 190px;">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
+                                                            </td>
 
-                                                        <td>Silene Oliveira</td>
-                                                        <td style="width: 190px;">
-                                                            <div class="d-flex align-items-center">
-                                                                <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                            <td>
+                                                                <div class="badge badge-soft-success font-size-12">
+                                                                    <?php echo $row['group_privacy']; ?> </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="badge badge-soft-danger font-size-12">
+                                                                    <?php echo $row['created_at']; ?> </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="badge badge-soft-danger font-size-12">
+                                                                    <?php echo $row['group_visibility']; ?> </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="dropdown">
+                                                                    <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                        <i class="mdi mdi-dots-horizontal"></i>
+                                                                    </a>
 
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-soft-success font-size-12"> Public</div>
-                                                        </td>
-                                                        <td>
-                                                            30 Nov,2021
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-soft-danger font-size-12">Requested </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-horizontal"></i>
-                                                                </a>
+                                                                    <div class="dropdown-menu dropdown-menu-end">
 
-                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                        <a href="viewgroup.php?group_id=<?php echo $row['group_id'];  ?>" class="dropdown-item">view</a>
 
-                                                                    <a href="viewgroup.php" class="dropdown-item" href="#">view</a>
-
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php } ?>
+                                                            </td>
+
+                                                        </tr>
+                                                    <?php  }
+                                                } else { ?>
+                                                    <tr> <?php echo "no record found"; ?></tr>
+                                                <?php   } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -379,7 +371,7 @@
                                         <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
                                             <thead>
                                                 <tr>
-                                                    <th style="width: 190px;">Burnt Calories</th>
+                                                    <th style="width: 190px;">Total Steps</th>
 
                                                     <th>Distance Covered </th>
                                                     <th>Time Taken </th>
@@ -387,35 +379,38 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+
                                                 <?php
-                                                for ($i = 0; $i <= 5; $i++) { ?>
+                                                $sql1 = "SELECT * FROM daily_steps_records where user_id='$userid'  ";
+                                                $result1 = mysqli_query($conn, $sql1);
+                                                while ($row = mysqli_fetch_assoc($result1)) {
+                                                    $stepsid = $row['id'];
+                                                ?>
+                                                    <td> <?php echo $row['steps']; ?>
+                                                    <td>
+                                                        <?php echo $row['distancecovered']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row['time_taken']; ?>
+                                                    </td>
 
-                                                    <tr>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                <i class="mdi mdi-dots-horizontal"></i>
+                                                            </a>
 
-                                                        <td>1,500</td>
+                                                            <div class="dropdown-menu dropdown-menu-end">
 
-                                                        <td>
-                                                            20 km
-                                                        </td>
-                                                        <td>
-                                                            5 Mins
-                                                        </td>
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-horizontal"></i>
-                                                                </a>
+                                                                <a href="useractivity.php?steps_id=<?php echo $stepsid;  ?>" class="dropdown-item">view</a>
 
-                                                                <div class="dropdown-menu dropdown-menu-end">
-
-                                                                    <a href="useractivity.php" class="dropdown-item" href="#">view</a>
-
-                                                                </div>
                                                             </div>
-                                                        </td>
+                                                        </div>
+                                                    </td>
                                                     </tr>
-
-                                                <?php } ?>
+                                                <?php
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -463,41 +458,51 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                for ($i = 0; $i <= 4; $i++) { ?>
+                                                $sql = "SELECT *  FROM challenges INNER JOIN challenges_participants ON  challenges.id = challenges_participants.user_id where user_id='$userid'";
+                                                $query = mysqli_query($conn, $sql);
+                                                if (mysqli_num_rows($query) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($query)) { ?>
 
-                                                    <tr>
+                                                        <?php $challenge_id = $row['challenge_id']; ?>
+                                                        <tr>
 
-                                                        <td>Silene Oliveira</td>
-                                                        <td style="width: 190px;">
-                                                            <div class="d-flex align-items-center">
-                                                                <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-soft-success font-size-12">Public</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-soft-success font-size-12">Indiviual</div>
-                                                        </td>
-
-
-                                                        <td>
-                                                            <div class="dropdown">
-                                                                <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                    <i class="mdi mdi-dots-horizontal"></i>
-                                                                </a>
-
-                                                                <div class="dropdown-menu dropdown-menu-end">
-
-                                                                    <a href="challengesview.php" class="dropdown-item" href="#">view</a>
-
+                                                            <td> <?php echo $row['name']; ?>
+                                                            <td style="width: 190px;">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                            </td>
 
-                                                <?php } ?>
+                                                            <td>
+                                                                <div class="badge badge-soft-success font-size-12">
+                                                                    <?php echo $row['challenge_type']; ?> </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="badge badge-soft-danger font-size-12">
+                                                                    <?php echo $row['challenge_visibility']; ?> </div>
+                                                            </td>
+
+                                                            <td>
+                                                                <div class="dropdown">
+                                                                    <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                                        <i class="mdi mdi-dots-horizontal"></i>
+                                                                    </a>
+
+                                                                    <div class="dropdown-menu dropdown-menu-end">
+
+                                                                        <a href="challengesview.php?challenge_id=<?php echo $challenge_id;  ?>" class="dropdown-item">view</a>
+
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+
+                                                        </tr>
+                                                    <?php
+                                                    }
+                                                } else {
+                                                    ?><tr> <?php echo "no record found"; ?>
+
+                                                    <?php  } ?>
                                             </tbody>
                                         </table>
                                     </div>

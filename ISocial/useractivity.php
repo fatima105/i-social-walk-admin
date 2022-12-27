@@ -9,6 +9,35 @@
 
         <div class="vertical-menu">
 
+            <?php
+            $stepsid = $_GET['steps_id'];
+
+            $sql1 = "SELECT * FROM daily_steps_records where id='$stepsid' ";
+            $result1 = mysqli_query($conn, $sql1);
+            while ($row = mysqli_fetch_assoc($result1)) {
+                $calories_burnt = $row['calories_burnt'];
+                $distance_covered = $row['distancecovered'];
+                $time_taken = $row['time_taken'];
+                $user_id = $row['user_id'];
+                $avg_speed = $row['avg_speed'];
+                $avg_pace = $row['avg_pace'];
+                $date = $row['date'];
+                $steps = $row['steps'];
+            }
+            ?>
+            <?php
+            $sql1 = "SELECT * FROM users where id='$user_id' ";
+            $result1 = mysqli_query($conn, $sql1);
+            while ($row = mysqli_fetch_assoc($result1)) {
+                $first_name = $row['first_name'];
+                $last_name = $row['last_name'];
+                $image = $row['profile_image'];
+                $email = $row['email'];
+
+                $phoneno = $row['phoneno'];
+            }
+            ?>
+
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <a href="index-2.html" class="logo logo-dark">
@@ -79,7 +108,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-12 text-start text-bold"> Name</div>
                                                                         <div class="col-md-6 col-12 text-start">
-                                                                            John
+                                                                            <?php echo $first_name . ' ' . $last_name; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -90,7 +119,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Calories Burnt</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12"> 290</div>
+                                                                            <div class="badge badge-soft-success font-size-12"> <?php echo $calories_burnt; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -101,7 +130,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">distance Covered</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="text-bold font-size-14"> 55 km</div>
+                                                                            <div class="text-bold font-size-14"><?php echo $distance_covered; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -112,7 +141,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Time Taken</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="text-bold font-size-14"> 5 Mins</div>
+                                                                            <div class="text-bold font-size-14"> <?php echo $distance_covered; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -124,19 +153,31 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Average Speed</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">25 km</div>
+                                                                            <div class="badge badge-soft-danger font-size-12"><?php echo $avg_speed; ?></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-12">
+                                                                    <div class="mb-3" style="display:flex;">
+                                                                        <div class="col-md-6 col-6  text-start text-bold">Total Steps</div>
+                                                                        <div class="col-md-6 col-6 text-start">
+                                                                            <div class="badge badge-soft-danger font-size-12"><?php echo $steps; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
                                                             </div>
 
+
                                                             <div class="row">
                                                                 <div class="col-md-12 col-12">
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Average Pace</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">25 km</div>
+                                                                            <div class="badge badge-soft-danger font-size-12"><?php echo $avg_pace; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -147,7 +188,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Date </div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12">10, May 2022</div>
+                                                                            <div class="badge badge-soft-success font-size-12"><?php echo $date; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

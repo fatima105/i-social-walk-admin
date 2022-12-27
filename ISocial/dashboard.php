@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
 <?php include('include/scripts.php'); ?>
+<?php
+include('include/connection.php');
+?>
 
 <body>
     <div id="layout-wrapper">
@@ -64,9 +67,13 @@
                                             </div>
                                             <div>
                                                 <h4 class="mt-4 pt-1 mb-0 font-size-22">
-                                                    9,235
-                                                    <span class="text-danger fw-medium font-size-13 align-middle">
+                                                    <?php
+                                                    $sql = "SELECT * FROM users";
+                                                    $result = mysqli_query($conn, $sql);
+                                                    $users = mysqli_num_rows($result); ?>
 
+                                                    <span class="text-secondary fw-medium  display-6 align-middle fw-bolder">
+                                                        <?php echo    $users ?>
                                                     </span>
                                                 </h4>
 
@@ -100,12 +107,15 @@
                                             </div>
                                             <div>
                                                 <h4 class="mt-4 pt-1 mb-0 font-size-22">
-                                                    13,235
-                                                    <span class="text-danger fw-medium font-size-13 align-middle">
+                                                    <?php
+                                                    $sql = "SELECT * FROM challenges";
+                                                    $result = mysqli_query($conn, $sql);
+                                                    $challenges = mysqli_num_rows($result); ?>
 
+                                                    <span class="text-secondary fw-medium display-6 align-middle fw-bolder">
+                                                        <?php echo    $challenges ?>
                                                     </span>
                                                 </h4>
-
                                             </div>
 
                                         </div>
@@ -133,9 +143,13 @@
                                             </div>
                                             <div>
                                                 <h4 class="mt-4 pt-1 mb-0 font-size-22">
-                                                    41,235
-                                                    <span class="text-danger fw-medium font-size-13 align-middle">
+                                                    <?php
+                                                    $sql = "SELECT * FROM groups";
+                                                    $result = mysqli_query($conn, $sql);
+                                                    $challenges = mysqli_num_rows($result); ?>
 
+                                                    <span class="text-secondary fw-medium display-6 align-middle fw-bolder">
+                                                        <?php echo    $challenges ?>
                                                     </span>
                                                 </h4>
 
@@ -167,7 +181,7 @@
                                             <div>
                                                 <h4 class="mt-4 pt-1 mb-0 font-size-22">
                                                     234,235
-                                                    <span class="text-danger fw-medium font-size-13 align-middle">
+                                                    <span class="text-secondary fw-medium font-size-13 align-middle">
 
                                                     </span>
                                                 </h4>
@@ -190,7 +204,7 @@
                                     <h4 class="card-title mb-0">Column charts</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div id="column-charts" data-colors='["#28b765", "#1f58c7","#ed5555"]' dir="ltr"></div>
+
 
                                 </div>
                             </div>
