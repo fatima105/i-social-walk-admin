@@ -1,4 +1,4 @@
-<header id="page-topbar" class="isvertical-topbar">
+<?php include('include/connection.php'); ?><header id="page-topbar" class="isvertical-topbar">
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->

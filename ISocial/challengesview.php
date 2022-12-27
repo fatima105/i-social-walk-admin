@@ -5,6 +5,36 @@
 <body>
     <div id="layout-wrapper">
         <?php include('include/header.php'); ?>
+      
+        $challenge_id = $_GET['challenge_id']; ?>
+
+        <?php
+        $sql1 = "SELECT * FROM challenges where id='$challenge_id' ";
+        $result1 = mysqli_query($conn, $sql1);
+        while ($row = mysqli_fetch_assoc($result1)) {
+            $name = $row['name'];
+            $challengeimage = $row['image'];
+            $challenge_type = $row['challenge_type'];
+            $challenge_visibility = $row['challenge_visibility'];
+            $challenge_privacy = $row['challenge_privacy'];
+            $start_date = $row['start_date'];
+            $end_date = $row['end_date'];
+            $challenge_metric_no = $row['challenge_metric_no'];
+            $challenge_metric_step_type = $row['challenge_metric_step_type'];
+        }
+        ?>
+        <?php
+        $sql1 = "SELECT * FROM users where id='$created_by_user_id' ";
+        $result1 = mysqli_query($conn, $sql1);
+        while ($row = mysqli_fetch_assoc($result1)) {
+            $first_name = $row['first_name'];
+            $last_name = $row['last_name'];
+            $email = $row['email'];
+
+            $phoneno = $row['phoneno'];
+        }
+        ?>
+
 
 
         <div class="vertical-menu">
@@ -79,7 +109,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-12 text-start text-bold"> Name</div>
                                                                         <div class="col-md-6 col-12 text-start">
-                                                                            30 Days Channel
+                                                                            <?php echo $name; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -90,7 +120,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Type</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12"> Indiviual</div>
+                                                                            <div class="badge badge-soft-success font-size-12"> <?php echo $challenge_type; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -101,7 +131,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Start Date</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="text-bold font-size-14"> 4 May,2022</div>
+                                                                            <div class="text-bold font-size-14"><?php echo $start_date; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -112,7 +142,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">End Date</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="text-bold font-size-14"> 8 May,2022</div>
+                                                                            <div class="text-bold font-size-14"> <?php echo $end_date; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -124,7 +154,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Visibility</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">Private</div>
+                                                                            <div class="badge badge-soft-danger font-size-12"><?php echo $challenge_visibility; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -135,7 +165,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Privacy</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12"> Public</div>
+                                                                            <div class="badge badge-soft-success font-size-12"> </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -146,7 +176,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold"> Metric No</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12">1001</div>
+                                                                            <div class="badge badge-soft-success font-size-12"><?php echo $challenge_metric_no; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -157,7 +187,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 col-6  text-start text-bold">Step Type</div>
                                                                         <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12">Steep</div>
+                                                                            <div class="badge badge-soft-success font-size-12"><?php echo $challenge_metric_step_type; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

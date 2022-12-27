@@ -1,12 +1,34 @@
 <!doctype html>
 <html lang="en">
 <?php include('include/scripts.php'); ?>
+<?php include('include/connection.php'); ?>
 
 <body>
     <div id="layout-wrapper">
-        <?php include('include/header.php'); ?>
+        <?php include('include/header.php');
+        $group_id = $_GET['group_id']; ?>
 
+        <?php
+        $sql1 = "SELECT * FROM groups where id='$group_id' ";
+        $result1 = mysqli_query($conn, $sql1);
+        while ($row = mysqli_fetch_assoc($result1)) {
+            $name = $row['name'];
+            $image = $row['image'];
+            $group_privacy = $row['group_privacy'];
+            $created_by_user_id = $row['created_by_user_id'];
+        }
+        ?>
+        <?php
+        $sql1 = "SELECT * FROM users where id='$created_by_user_id' ";
+        $result1 = mysqli_query($conn, $sql1);
+        while ($row = mysqli_fetch_assoc($result1)) {
+            $first_name = $row['first_name'];
+            $last_name = $row['last_name'];
+            $email = $row['email'];
 
+            $phoneno = $row['phoneno'];
+        }
+        ?>
         <div class="vertical-menu">
 
             <!-- LOGO -->
@@ -79,7 +101,18 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">Admin Name</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            John
+                                                                            <?php echo $first_name . ' ' . $last_name; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="mb-3" style="display:flex;">
+                                                                        <div class="col-md-6 text-center text-bold">Group Name</div>
+                                                                        <div class="col-md-6 text-start">
+                                                                            <?php echo $name; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -89,9 +122,9 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold"> Email</div>
+                                                                        <div class="col-md-6 text-center text-bold"> Admin Email</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            John@gmail.com
+                                                                            <?php echo $email; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -102,13 +135,13 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">Phone No</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            0332-2943034
+                                                                            <?php echo $phoneno; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
                                                             </div>
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">Group</div>
@@ -118,14 +151,14 @@
                                                                     </div>
                                                                 </div>
 
-                                                            </div>
+                                                            </div> -->
 
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold"> Group Privacy</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12"> Public</div>
+                                                                            <div class="badge badge-soft-success font-size-12"> <?php echo $group_privacy; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
