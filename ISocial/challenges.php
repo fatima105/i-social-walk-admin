@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <?php include('include/scripts.php'); ?>
+<?php include('include/connection.php'); ?>
+<?php include('include/functions.php'); ?>
 
 <body>
 
@@ -544,58 +546,42 @@
 
 
                                                     <th style="width: 190px;"> Name</th>
-                                                    <th>Admin</th>
+                                                    <th>Admin Name </th>
                                                     <th>Image </th>
-                                                    <th> Members</th>
-                                                    <th> Privacy</th>
-                                                    <th>Created at</th>
+                                                    <th> Challenge Type</th>
+                                                    <th> Challenge Visibility</th>
+                                                    <th>Start Date -End Date</th>
                                                     <th>Action</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                for ($i = 0; $i <= 10; $i++) { ?>
-
+                                                $sql1 = "SELECT * FROM challenges ";
+                                                $result1 = mysqli_query($conn, $sql1);
+                                                while ($row = mysqli_fetch_assoc($result1)) {
+                                                    $challenge_id = $row['id'];
+                                                    $user_id = $row['created_by_user_id']; ?>
                                                     <tr>
 
-                                                        <td>Five Days Challenge </td>
-                                                        <td>SileneOlive </td>
-
+                                                        <td><?php echo $row['name']; ?></td>
+                                                        <td><?php echo getname($user_id); ?></td>
                                                         <td style="width: 190px;">
                                                             <div class="d-flex align-items-center">
                                                                 <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
 
                                                             </div>
                                                         </td>
+
                                                         <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                A
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
+                                                            <div class="badge badge-soft-danger font-size-12"> <?php echo $row['challenge_type']; ?></div>
                                                         </td>
                                                         <td>
-                                                            <div class="badge badge-soft-danger font-size-12"> Private</div>
+                                                            <div class="badge badge-soft-danger font-size-12"> <?php echo $row['challenge_visibility']; ?></div>
                                                         </td>
                                                         <td>
-                                                            30 Dec,2021
+
+                                                            <?php echo $row['start_date'] . ' ' . $row['end_date'] ?>
                                                         </td>
 
 
@@ -607,15 +593,13 @@
 
                                                                 <div class="dropdown-menu dropdown-menu-end">
 
-                                                                    <a class="dropdown-item" href="challengesview.php">view</a>
+                                                                    <a class="dropdown-item" href="challengesview.php?challenge_id=<?php echo $challenge_id; ?>">view</a>
 
                                                                 </div>
                                                             </div>
                                                         </td>
 
-                                                    </tr>
-
-                                                <?php } ?>
+                                                    <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>

@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
 <?php include('include/scripts.php'); ?>
+<?php include('include/connection.php'); ?>
 
 <body>
     <div id="layout-wrapper">
-        <?php include('include/header.php'); ?>
-      
+        <?php include('include/header.php');
+
         $challenge_id = $_GET['challenge_id']; ?>
 
         <?php
