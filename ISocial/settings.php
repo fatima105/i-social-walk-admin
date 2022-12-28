@@ -110,19 +110,19 @@ if (isset($_POST['Update'])) {
                                         <div class="row mb-4">
                                             <label for="horizontal-email-input" class="col-sm-3 col-form-label">Old Password</label>
                                             <div class="col-sm-9">
-                                                <input required type="oldpassword" name="oldpassword" class="form-control" id="horizontal-email-input" />
+                                                <input required type="password" name="oldpassword" class="form-control" id="horizontal-email-input" />
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-email-input" class="col-sm-3 col-form-label">New Password</label>
                                             <div class="col-sm-9">
-                                                <input required type="newpassword" name="newpassword" class="form-control" id="horizontal-email-input" />
+                                                <input required type="password" name="newpassword" class="form-control" id="horizontal-email-input" />
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-password-input" class="col-sm-3 col-form-label">Confirm Password</label>
                                             <div class="col-sm-9">
-                                                <input required type="confirmpassword" name="confirmpassword" class="form-control" id="horizontal-password-input" />
+                                                <input required type="password" name="confirmpassword" class="form-control" id="horizontal-password-input" />
                                             </div>
                                         </div>
 

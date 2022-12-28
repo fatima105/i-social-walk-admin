@@ -1,4 +1,11 @@
-<header id="page-topbar" class="isvertical-topbar">
+<?php
+session_start();
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+} else {
+    header("location:login.php");
+}
+?><header id="page-topbar" class="isvertical-topbar">
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
