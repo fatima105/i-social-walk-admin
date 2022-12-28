@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
-<?php include('include/scripts.php'); ?>
+<?php include('include/scripts.php');
+include('include/connection.php'); ?>
+<!-- <?php include('include/functions.php'); ?> -->
 
 <body>
 
@@ -553,8 +555,8 @@
 
 
                                                     <th style="width: 190px;"> Name</th>
-                                                    <th>Admin</th>
-                                                    <th>Image </th>
+                                                    <th>Admin Name </th>
+                                                    <th>Profile Image </th>
                                                     <th> Members</th>
                                                     <th> Privacy</th>
                                                     <th>Created at</th>
@@ -564,14 +566,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                for ($i = 0; $i <= 10; $i++) { ?>
 
+                                                <?php
+                                                $sql1 = "SELECT * FROM groups  ";
+                                                $result1 = mysqli_query($conn, $sql1);
+                                                while ($row = mysqli_fetch_assoc($result1)) {
+                                                    $groupid = $row['id'];
+                                                    $user_id = $row['created_by_user_id']; ?>
                                                     <tr>
 
-                                                        <td>Five Days Challenge </td>
-                                                        <td>SileneOlive </td>
-
+                                                        <td><?php echo $row['name']; ?></td>
+                                                        <td><?php echo getname($user_id); ?></td>
                                                         <td style="width: 190px;">
                                                             <div class="d-flex align-items-center">
                                                                 <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
@@ -590,37 +595,24 @@
                                                                         <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
                                                                     </a>
                                                                 </div>
-
                                                                 <div class="avatar-group-item">
-                                                                    <a data-bs-toggle="modal" data-bs-target="#myModal" href="javascript: void(0);" class="d-inline-block">
+                                                                    <a href="javascript: void(0);" class="d-inline-block">
                                                                         <div class="avatar-sm">
                                                                             <span class="avatar-title rounded-circle bg-success text-white font-size-16">
                                                                                 A
                                                                             </span>
                                                                         </div>
-
-
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                + 2
-                                                                            </span>
-                                                                        </div>
-
-
                                                                     </a>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="badge badge-soft-danger font-size-12"> Private</div>
+                                                            <div class="badge badge-soft-danger font-size-12"> <?php echo $row['group_privacy']; ?></div>
                                                         </td>
                                                         <td>
-                                                            30 Dec,2021
+                                                            <?php echo $row['created_at']; ?>
                                                         </td>
+
 
                                                         <td>
                                                             <div class="dropdown">
@@ -630,73 +622,15 @@
 
                                                                 <div class="dropdown-menu dropdown-menu-end">
 
-                                                                    <a href="viewgroup.php" class="dropdown-item">view</a>
+                                                                    <a class="dropdown-item" href="viewgroup.php?group_id=<?php echo $groupid; ?>">view</a>
 
                                                                 </div>
                                                             </div>
                                                         </td>
 
-                                                    </tr>
+                                                    <?php }
+                                                    ?>
 
-                                                    <tr>
-
-                                                        <td>Five Days Challenge </td>
-                                                        <td> Alba Flores</td>
-
-                                                        <td style="width: 190px;">
-                                                            <div class="d-flex align-items-center">
-                                                                <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-
-                                                                <div class="avatar-group-item">
-                                                                    <a data-bs-toggle="modal" data-bs-target="#myModal" href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                A
-                                                                            </span>
-                                                                        </div>
-
-
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                + 2
-                                                                            </span>
-                                                                        </div>
-
-
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="badge badge-soft-danger font-size-12"> Public</div>
-                                                        </td>
-                                                        <td>
-                                                            30 Dec,2021
-                                                        </td>
-
-
-
-                                                    </tr>
-                                                <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
