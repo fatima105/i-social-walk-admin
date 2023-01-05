@@ -2,13 +2,11 @@
 <html lang="en">
 
 <?php
-session_start();
+
 include('include/connection.php');
 include('include/scripts.php');
-echo $sessionid;
-echo $_SESSION['id'];
 
-
+include('include/header.php');
 if (isset($_POST['Update'])) {
     $newpassword = $_POST['newpassword'];
     $confirmpassword = $_POST['confirmpassword'];
@@ -17,6 +15,7 @@ if (isset($_POST['Update'])) {
     $sql = "select * from users where email = '$_SESSION[email]' AND password='$opass'";
     $query = mysqli_query($conn, $sql);
     if (mysqli_num_rows($query) > 0) {
+
         if ($newpassword != $confirmpassword) {
 
             $_SESSION['status_text'] = "New Password & Confirm Password Does'nt Matched";
@@ -29,7 +28,8 @@ if (isset($_POST['Update'])) {
 
             $queryl = mysqli_query($conn, $sqll);
             if ($queryl) {
-                $_SESSION['status_text'] = "You can login now";
+
+                $_SESSION['status_text'] = "Password Updated";
                 $_SESSION['status_title'] = "Password Updated";
                 $_SESSION['status_code'] = "success";
             } else {
@@ -40,17 +40,17 @@ if (isset($_POST['Update'])) {
                 // header("location:../verify-otp.php");
             }
         }
+    } else {
+        $_SESSION['status_text'] = "error";
+        $_SESSION['status_title'] = "Old Password Not Matched";
+        $_SESSION['status_code'] = "error";
     }
-} else {
-    $_SESSION['status_text'] = "error";
-    $_SESSION['status_title'] = "old Password doesnot match";
-    $_SESSION['status_code'] = "error";
 }
 ?>
 
 <body>
     <div id="layout-wrapper">
-        <?php include('include/header.php'); ?>
+
 
         <div class="vertical-menu">
 
@@ -103,7 +103,7 @@ if (isset($_POST['Update'])) {
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title mb-0">Update Password</h4>
-                                    <?php echo   $_SESSION['id']; ?>
+                                    <!--  -->
                                 </div>
                                 <div class="card-body">
                                     <form action="" method="POST">

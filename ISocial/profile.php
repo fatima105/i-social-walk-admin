@@ -4,8 +4,9 @@
 
 <body>
     <div id="layout-wrapper">
-        <?php include('include/header.php'); ?>
+        <?php include('include/header.php');
 
+        ?>
 
         <div class="vertical-menu">
 
@@ -49,28 +50,13 @@
                 <div class="container-fluid">
 
                     <div class="row">
-                        <div class="col-xxl-3">
+                        <div class="offset-md-3 col-md-6">
                             <div class="card">
                                 <div class="card-body p-0">
                                     <div class="user-profile-img">
                                         <img src="assets/images/pattern-bg.jpg" class="profile-img profile-foreground-img rounded-top" style="height: 120px;" alt="">
                                         <div class="overlay-content rounded-top">
-                                            <div>
-                                                <div class="user-nav p-3">
-                                                    <div class="d-flex justify-content-end">
-                                                        <div class="dropdown">
-                                                            <a class="text-muted dropdown-toggle font-size-16" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                                <i class="bx bx-dots-vertical text-white font-size-20"></i>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <a class="dropdown-item" href="#">Edit</a>
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                     <!-- end user-profile-img -->
@@ -79,10 +65,16 @@
                                     <div class="p-4 pt-0">
 
                                         <div class="mt-n5 position-relative text-center border-bottom pb-3">
-                                            <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                            <?php if ($profile_image == '') {
 
+                                                echo '<div class="icon-badge rounded-circle text-center fs-5 bg-info text-white" style="height:100px; width:100px;">' . strtoupper(substr($first_name, 0, 1)) . '</div>';
+                                            } else {
+                                                echo '
+<img style="height:100px; width:100px;" class="rounded-circle header-profile-user p-3" src="api/' . $profile_image . '"
+alt="Header Avatar">';
+                                            } ?>
                                             <div class="mt-3">
-                                                <h5 class="mb-1">Martin Gurley</h5>
+                                                <h5 class="mb-1"><?php echo $first_name . '  ' . $last_name; ?></h5>
 
                                             </div>
 
@@ -93,34 +85,28 @@
                                                 <tbody>
                                                     <tr>
                                                         <th class="fw-bold">
-                                                            City :</th>
-                                                        <td class="text-muted">New Your City</td>
+                                                            Email :</th>
+                                                        <td class="text-muted"><?php echo $email; ?></td>
                                                     </tr>
                                                     <!-- end tr -->
 
                                                     <!-- end tr -->
                                                     <tr>
                                                         <th class="fw-bold">
-                                                            Country :</th>
-                                                        <td class="text-muted">USA</td>
-                                                    </tr>
-                                                    <!-- end tr -->
-                                                    <tr>
-                                                        <th class="fw-bold">Pin Code :</th>
-                                                        <td class="text-muted">0005485</td>
+                                                            Active Watch :</th>
+                                                        <td class="text-muted"><?php echo $active_watch; ?></td>
                                                     </tr>
                                                     <!-- end tr -->
 
-                                                    <tr>
-                                                        <th class="fw-bold">Phone :</th>
-                                                        <td class="text-muted">+214 5632564</td>
-                                                    </tr>
                                                     <!-- end tr -->
 
                                                     <tr>
-                                                        <th class="fw-bold">Email :</th>
-                                                        <td class="text-muted">martingurley52@gmail.com</td>
+                                                        <th class="fw-bold">Phone Number :</th>
+                                                        <td class="text-muted"><?php echo $phone_no; ?></td>
                                                     </tr>
+                                                    <!-- end tr -->
+
+
                                                     <!-- end tr -->
                                                 </tbody><!-- end tbody -->
                                             </table>

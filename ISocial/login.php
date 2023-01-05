@@ -10,7 +10,7 @@ include 'include/scripts.php';
 session_start();
 if (isset($_SESSION['id'])) {
 
-    header("location:users.php");
+    header("location:dashboard.php");
     exit();
 }
 ?>
@@ -95,9 +95,9 @@ if (isset($_SESSION['id'])) {
                                             </div>
 
                                             <div class="mb-3">
-                                                <div class="float-end">
+                                                <!-- <div class="float-end">
                                                     <a href="recover.php" class="text-muted text-decoration-underline">Forgot password?</a>
-                                                </div>
+                                                </div> -->
                                                 <label class="form-label" for="password-input">password</label>
                                                 <div class="position-relative auth-pass-inputgroup input-custom-icon">
                                                     <span class="bx bx-lock-alt"></span>

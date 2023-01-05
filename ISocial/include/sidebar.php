@@ -7,7 +7,7 @@
             <a href="javascript: void(0);">
                 <i class="bx bx-home-alt icon nav-icon"></i>
                 <span class="menu-item" data-key="t-dashboard">Dashboard</span>
-                <span class="badge rounded-pill bg-primary">2</span>
+
             </a>
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="dashboard.php" data-key="t-ecommerce">Dashboard</a></li>
@@ -26,7 +26,7 @@
         </li>
 
         <li>
-            <a href="Groups.php">
+            <a href="groups.php">
                 <i class="bx bx-check-square icon nav-icon"></i>
                 <span class="menu-item" data-key="t-todo">Groups</span>
 
@@ -55,7 +55,7 @@
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="reportedusers.php" data-key="t-basic-tables">Report Users</a></li>
                 <li><a href="reportedgroups.php" data-key="t-advanced-tables">Report Groups</a></li>
-                <li><a href="reportedchallenges.php" data-key="t-advanced-tables">Report Challenges</a></li>
+                <!-- <li><a href="reportedchallenges.php" data-key="t-advanced-tables">Report Challenges</a></li> -->
             </ul>
         </li>
         <li>

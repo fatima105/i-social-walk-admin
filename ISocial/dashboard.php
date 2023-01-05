@@ -144,7 +144,7 @@ include('include/connection.php');
                                             <div>
                                                 <h4 class="mt-4 pt-1 mb-0 font-size-22">
                                                     <?php
-                                                    $sql = "SELECT * FROM groups";
+                                                    $sql = "SELECT * FROM user_groups";
                                                     $result = mysqli_query($conn, $sql);
                                                     $challenges = mysqli_num_rows($result); ?>
 
@@ -196,20 +196,7 @@ include('include/connection.php');
                             </div>
                         </div>
                     </div>
-                    <div class="row">
 
-                        <div class="col-xl-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title mb-0">Column charts</h4>
-                                </div>
-                                <div class="card-body">
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 

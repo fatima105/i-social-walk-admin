@@ -15,6 +15,7 @@
             $last_name = $row['last_name'];
             $email = $row['email'];
             $phoneno = $row['phoneno'];
+            $image = $row['image'];
             $device_token = $row['device_token'];
             $active_watch = $row['active_watch'];
         } ?>
@@ -180,12 +181,7 @@
                                             </div>
                                             <div class="col-xl-8 col-12">
                                                 <div class="text-right pb-3 pb-xl-0">
-                                                    <form class="email-search">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control bg-light" placeholder="Search...">
-                                                            <span class="bx bx-search font-size-18"></span>
-                                                        </div>
-                                                    </form>
+
                                                 </div>
                                             </div>
 
@@ -208,20 +204,30 @@
                                             <tbody>
                                                 <?php
                                                 $sql = "SELECT *
-                                                FROM groups
-                                                INNER JOIN group_member ON  groups.id = group_member.group_id where user_id='$userid';";
+                                                FROM user_groups
+                                                INNER JOIN group_member ON  user_groups.id = group_member.group_id where user_id='$userid';";
                                                 $query = mysqli_query($conn, $sql);
                                                 if (mysqli_num_rows($query) > 0) {
                                                     while ($row = mysqli_fetch_assoc($query)) { ?>
-                                                        <?php $row['group_id']; ?>
+                                                        <?php
+                                                        $image = $row['image'];
+                                                        $row['group_id']; ?>
                                                         <tr>
-
-                                                            <td> <?php echo $row['name']; ?>
+                                                            <td> <?php echo $row['name']; ?></td>
                                                             <td style="width: 190px;">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                    <?php if ($image == '') {
+
+                                                                        echo '<div class="icon-badge rounded-circle text-center fs-5 bg-info text-white" style="height:100px; width:100px;">' .
+                                                                            "No Image Uploded" . '</div>';
+                                                                    } else {
+                                                                        echo '
+<img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $image . '"
+alt="Header Avatar">';
+                                                                    } ?>
                                                                 </div>
                                                             </td>
+
 
                                                             <td>
                                                                 <div class="badge badge-soft-success font-size-12">
@@ -263,78 +269,71 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-6 col-md-6">
+                        <div class="col-xl-12 col-12 col-md-12">
                             <div class="card">
                                 <div class="card-header ">
                                     <h5 class=" card-title mb-0">Average Daily Summary</h5>
                                 </div>
-                                <div class="card-body pt-0 pb-3">
-                                    <div id="overview-chart" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 190px;">Total Steps</th>
+                                                <th>Calories Burnt</th>
+                                                <th>Distance Covered </th>
+                                                <th>Time Taken </th>
+                                                <th>Average Speed</th>
+                                                <th>Average Pace</th>
+                                                <th>Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <?php
+                                            $sql1 = "SELECT * FROM daily_steps_records where user_id='$userid' limit 7  ";
+                                            $result1 = mysqli_query($conn, $sql1);
+                                            while ($row = mysqli_fetch_assoc($result1)) {
+                                                $stepsid = $row['id'];
+                                            ?>
+                                                <td> <?php echo $row['steps']; ?></td>
+                                                <td> <?php echo $row['calories_burnt']; ?>
+                                                <td>
+                                                    <?php echo $row['distancecovered']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['time_taken']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['avg_speed']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['avg_pace']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['date']; ?>
+                                                </td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                            <i class="mdi mdi-dots-horizontal"></i>
+                                                        </a>
+
+                                                        <div class="dropdown-menu dropdown-menu-end">
+
+                                                            <a href="useractivity.php?steps_id=<?php echo $stepsid;  ?>" class="dropdown-item">view</a>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-start">
-                                        <div class="flex-grow-1 overflow-hidden">
-                                            <h5 class="card-title mb-4 text-truncate">Top Selling Categories</h5>
-                                        </div>
 
-                                    </div>
-
-                                    <div id="saleing-categories" data-colors='["#1f58c7", "#4976cf","#6a92e1", "#e6ecf9"]' class="apex-charts" dir="ltr"></div>
-
-                                    <div class="row mt-3 pt-1">
-                                        <div class="col-md-6">
-                                            <div class="px-2 mt-2">
-                                                <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                    <i class="mdi mdi-circle font-size-10 text-primary"></i>
-                                                    <div class="flex-grow-1 ms-2 overflow-hidden">
-                                                        <p class="font-size-15 mb-1 text-truncate">Week 1</p>
-                                                    </div>
-                                                    <div class="flex-shrink-0 ms-2">
-                                                        <span class="fw-bold">34.3%</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="d-flex align-items-center mt-2">
-                                                    <i class="mdi mdi-circle font-size-10 text-success"></i>
-                                                    <div class="flex-grow-1 ms-2 overflow-hidden">
-                                                        <p class="font-size-15 mb-0 text-truncate">Week 2</p>
-                                                    </div>
-                                                    <div class="flex-shrink-0 ms-2">
-                                                        <span class="fw-bold">25.7%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="px-2 mt-2">
-                                                <div class="d-flex align-items-center mt-sm-0 mt-2">
-                                                    <i class="mdi mdi-circle font-size-10 text-info"></i>
-                                                    <div class="flex-grow-1 ms-2 overflow-hidden">
-                                                        <p class="font-size-15 mb-1 text-truncate">Week 3</p>
-                                                    </div>
-                                                    <div class="flex-shrink-0 ms-2">
-                                                        <span class="fw-bold">18.6%</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="d-flex align-items-center mt-2">
-                                                    <i class="mdi mdi-circle font-size-10 text-secondary"></i>
-                                                    <div class="flex-grow-1 ms-2 overflow-hidden">
-                                                        <p class="font-size-15 mb-0 text-truncate">Week 4</p>
-                                                    </div>
-                                                    <div class="flex-shrink-0 ms-2">
-                                                        <span class="fw-bold">21.4%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -355,12 +354,7 @@
                                             </div>
                                             <div class="col-xl-8 col-12">
                                                 <div class="text-right pb-3 pb-xl-0">
-                                                    <form class="email-search">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control bg-light" placeholder="Search...">
-                                                            <span class="bx bx-search font-size-18"></span>
-                                                        </div>
-                                                    </form>
+
                                                 </div>
                                             </div>
 
@@ -431,12 +425,7 @@
                                             </div>
                                             <div class="col-xl-8 col-12">
                                                 <div class="text-right pb-3 pb-xl-0">
-                                                    <form class="email-search">
-                                                        <div class="position-relative">
-                                                            <input type="text" class="form-control bg-light" placeholder="Search...">
-                                                            <span class="bx bx-search font-size-18"></span>
-                                                        </div>
-                                                    </form>
+
                                                 </div>
                                             </div>
 

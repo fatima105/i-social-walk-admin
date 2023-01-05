@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 
-<?php include('include/scripts.php'); ?>
+<?php include('include/scripts.php');
+include('include/connection.php'); ?>
 
 <body>
 
@@ -29,21 +30,21 @@
                                 <div class="p-2 mt-4">
 
                                     <div class="alert alert-success text-center small mb-4" role="alert">
-                                        Enter your Email and Four Digit Code will be sent to you!
+                                        Enter your Email & Six Digit Code will be sent to you!
                                     </div>
 
-                                    <form action="emailverification.php">
+                                    <form action="users/send_otp.php" method="POST">
 
                                         <div class="mb-3">
                                             <label class="form-label" for="useremail">Email</label>
                                             <div class="position-relative input-custom-icon">
-                                                <input type="email" class="form-control" id="useremail" placeholder="Enter email">
+                                                <input name="email" type="email" class="form-control" placeholder="Enter email">
                                                 <span class="bx bx-mail-send"></span>
                                             </div>
                                         </div>
 
                                         <div class="mt-4">
-                                            <button href="emailverification.php" class="btn btn-primary w-100 waves-effect waves-light" type="submit">Reset</button>
+                                            <button name="submit" class="btn btn-primary w-100 waves-effect waves-light" type="submit">Reset</button>
                                         </div>
 
                                         <div class="mt-4 text-center">

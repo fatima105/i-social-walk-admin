@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php include('include/scripts.php'); ?>
+<?php include('include/functions.php'); ?>
 
 <body>
 
@@ -536,7 +537,7 @@
                                                 <div class="pb-3 pb-xl-0">
                                                     <form class="email-search">
                                                         <div class="position-relative mt-5">
-                                                            <input type="text" class="form-control bg-light" placeholder="Search...">
+                                                            <input id="myInput" onkeyup="myFunction()" type="text" class="form-control bg-light" placeholder="Search...">
                                                             <span class="bx bx-search font-size-18"></span>
                                                         </div>
                                                     </form>
@@ -547,69 +548,48 @@
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
+                                        <table id="myTable" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
                                             <thead>
                                                 <tr>
 
 
                                                     <th style="width: 190px;"> Name</th>
                                                     <th>Admin</th>
-                                                    <th>Group Members</th>
-                                                    <th> Members</th>
+
+
                                                     <th>Comments</th>
                                                     <th>Blocked By</th>
-                                                    <th>Actions</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                for ($i = 0; $i <= 10; $i++) { ?>
 
+                                                $sql = "SELECT *
+                                                 FROM user_groups
+                                                 INNER JOIN report_group ON user_groups.id = report_group.report_group;";
+                                                $query1 = mysqli_query($conn, $sql);
+                                                while ($row = mysqli_fetch_assoc($query1)) {
+
+
+                                                ?> <tr>
                                                     <tr>
 
-                                                        <td>Five Days Challenge </td>
-                                                        <td>SileneOlive </td>
+                                                        <td><?php echo $row['name']; ?> </td>
+                                                        <td><?php $user_id = $row['created_by_user_id'];
+                                                            echo getname($user_id); ?> </td>
+                                                        <td><?php echo $row['comments']; ?> </td>
+
 
                                                         <td>
-
-                                                            <div class="col-md-6 text-start">
-                                                                <div class="avatar-group">
-                                                                    <div class="avatar-group-item">
-                                                                        <a href="javascript: void(0);" class="d-inline-block">
-                                                                            <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="avatar-group-item">
-                                                                        <a href="javascript: void(0);" class="d-inline-block">
-                                                                            <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                        </a>
-                                                                    </div>
-
-
-                                                                    <div class="avatar-group-item">
-                                                                        <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
-                                                                            <div class="avatar-sm">
-                                                                                <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                    + 2
-                                                                                </span>
-                                                                            </div>
-
-
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
+                                                            <div class="badge badge-soft-danger font-size-12"><?php
+                                                                                                                $user_id = $row['reported_by'];
+                                                                                                                echo $name = getname($user_id); ?>
                                                             </div>
                                                         </td>
 
-                                                        <td>
-                                                            <div class="badge badge-soft-danger font-size-12">Lorem ipsum dolor sit amet</div>
-                                                        </td>
-                                                        <td>
-                                                            XYZ
-                                                        </td>
-                                                        <td>Fatima</td>
-                                                        <td>
+
+                                                        <!-- <td>
                                                             <div class="dropdown">
                                                                 <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
                                                                     <i class="mdi mdi-dots-horizontal"></i>
@@ -621,7 +601,7 @@
 
                                                                 </div>
                                                             </div>
-                                                        </td>
+                                                        </td> -->
 
 
                                                     </tr>
@@ -719,6 +699,28 @@
 
 
     <?php include('include/footerscripts.php'); ?>
+    <script>
+        function myFunction() {
+
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 
 

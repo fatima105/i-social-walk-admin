@@ -36,4 +36,6 @@
          });
       </script>
    <?php unset($_SESSION['status_title']);
+      unset($_SESSION['status_text']);
+      unset($_SESSION['status_code']);
    } ?>

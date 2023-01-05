@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 <?php include('include/scripts.php'); ?>
-<?php include('include/connection.php'); ?>
+<?php include('include/connection.php');
+include('include/functions.php'); ?>
 
 <body>
     <div id="layout-wrapper">
@@ -9,7 +10,7 @@
         $group_id = $_GET['group_id']; ?>
 
         <?php
-        $sql1 = "SELECT * FROM groups where id='$group_id' ";
+        $sql1 = "SELECT * FROM user_groups where id='$group_id' ";
         $result1 = mysqli_query($conn, $sql1);
         while ($row = mysqli_fetch_assoc($result1)) {
             $name = $row['name'];
@@ -26,7 +27,7 @@
             $last_name = $row['last_name'];
             $email = $row['email'];
 
-            $phoneno = $row['phoneno'];
+            $phone_no = $row['phoneno'];
         }
         ?>
         <div class="vertical-menu">
@@ -135,7 +136,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">Phone No</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            <?php echo $phoneno; ?>
+                                                                            <?php echo $phone_no; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -171,131 +172,118 @@
                                                                         <div class="col-md-6 text-center text-bold"> Group Members</div>
                                                                         <div class="col-md-6 text-start">
 
-                                                                            <div class="avatar-group">
-                                                                                <div class="avatar-group-item">
-                                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="avatar-group-item">
-                                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                                    </a>
-                                                                                </div>
 
-                                                                                <div class="avatar-group-item">
-                                                                                    <a data-bs-toggle="modal" data-bs-target="#myModal" href="javascript: void(0);" class="d-inline-block">
-                                                                                        <div class="avatar-sm">
-                                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                                A
-                                                                                            </span>
-                                                                                        </div>
+                                                                            <div class="avatar-group-item">
+                                                                                <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
+                                                                                    <div class="avatar-sm">
+                                                                                        <span class="avatar-title rounded-circle bg-success text-white font-size-16 text-center" style="width:70px; height:70px;">
+                                                                                            View Members
+                                                                                        </span>
+                                                                                    </div>
 
 
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="avatar-group-item">
-                                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
-                                                                                        <div class="avatar-sm">
-                                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                                + 2
-                                                                                            </span>
-                                                                                        </div>
-
-
-                                                                                    </a>
-                                                                                </div>
+                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
-                                                            </div>
-
-                                                            <div>
-
                                                             </div>
 
                                                         </div>
-                                                        <!-- end card body -->
+
+                                                        <div>
+
+                                                        </div>
+
                                                     </div>
+                                                    <!-- end card body -->
                                                 </div>
                                             </div>
-
-
                                         </div>
+
+
                                     </div>
-
-
-
                                 </div>
+
+
+
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-                    <!-- end row -->
-
                 </div>
-                <!-- container-fluid -->
+
+
+
+
+
+                <!-- end row -->
+
             </div>
-            <!-- End Page-content -->
-
-            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center">Group Members</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <?php for ($i = 0; $i < 4; $i++) { ?>
-
-                                <div class="row">
-
-                                    <div class="col-12" style="display:flex">
-                                        <div class="col-6 text-center">
-                                            Fatima
-                                        </div>
-                                        <div class="col-6 text-center">
-
-                                            <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-12" style="display:flex">
-                                        <div class="col-6 text-center">
-                                            John
-                                        </div>
-                                        <div class="col-6 text-center">
-
-                                            <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hr mb-2 mt-2">
-
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-
-
-            <?php include('include/footer.php'); ?>
+            <!-- container-fluid -->
         </div>
-        <!-- end main content-->
+        <!-- End Page-content -->
+
+        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center">Group Members</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <?php
+                        $sql = "Select * from group_member WHERE group_id='$group_id' AND status='membered' ";
+
+                        $result = mysqli_query($conn, $sql);
+
+                        $rowcount = mysqli_num_rows($result);
+                        if ($rowcount > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $user_id =  $row['user_id'];
+                                $sql1 = "Select * from users WHERE id='$user_id'  ";
+
+                                $result1 = mysqli_query($conn, $sql1);
+
+                                $rowcount1 = mysqli_num_rows($result1);
+                                if ($rowcount1 > 0) {
+                                    while ($row1 = mysqli_fetch_assoc($result1)) {
+                                        $image =  $row1['profile_image'];
+
+                        ?>
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-12" style="display:flex">
+                                                <div class="col-6 text-center">
+                                                    <?php echo $name = getname($user_id); ?>
+                                                </div>
+                                                <div class="col-6 text-center">
+
+                                                    <?php echo '
+<img style="height:50px; width:50px;" class="rounded-circle avatar-sm" src="api/' . $image . '" 
+alt="Header Avatar">'; ?>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="hr mb-2 mt-2">
+
+                                        </div>
+                        <?php }
+                                }
+                            }
+                        } ?>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <?php include('include/footer.php'); ?>
+    </div>
+    <!-- end main content-->
 
     </div>
     <!-- END layout-wrapper -->

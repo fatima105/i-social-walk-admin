@@ -87,122 +87,7 @@
                                                     <h5 class="font-size-14 mb-3">Recent</h5>
                                                 </div>
                                                 <ul class="list-unstyled chat-list p-3">
-                                                    <li class="active">
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 user-img online align-self-center me-3">
-                                                                    <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-sm" alt="">
-                                                                    <span class="user-status"></span>
-                                                                </div>
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">Jennie Sherlock</h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <span class="badge bg-danger rounded-pill">1</span>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 user-img online align-self-center me-3">
-                                                                    <div class="avatar-sm align-self-center">
-                                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                                            S
-                                                                        </span>
-                                                                    </div>
-                                                                    <span class="user-status"></span>
-                                                                </div>
 
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">Stacie Dube</h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 user-img away align-self-center me-3">
-                                                                    <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="">
-                                                                    <span class="user-status"></span>
-                                                                </div>
-
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">Katie Olson</h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <span class="badge bg-warning rounded-pill">4</span>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 user-img align-self-center me-3">
-                                                                    <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-sm" alt="">
-                                                                    <span class="user-status"></span>
-                                                                </div>
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">Marshall Wilson</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 user-img online align-self-center me-3">
-                                                                    <div class="avatar-sm align-self-center">
-                                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                                            J
-                                                                        </span>
-                                                                    </div>
-                                                                    <span class="user-status"></span>
-                                                                </div>
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">James Lee</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 user-img align-self-center me-3">
-                                                                    <img src="assets/images/users/avatar-5.jpg" class="rounded-circle avatar-sm" alt="">
-                                                                    <span class="user-status"></span>
-                                                                </div>
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">Ronald Tucker</h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <span class="badge bg-success rounded-pill">23</span>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-
-                                                                <div class="flex-shrink-0 user-img align-self-center me-3">
-                                                                    <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-sm" alt="">
-                                                                    <span class="user-status"></span>
-                                                                </div>
-
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">Dennis Stewart</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
                                                     <li>
                                                         <a href="#">
                                                             <div class="d-flex align-items-center">
@@ -217,188 +102,13 @@
                                                             </div>
                                                         </a>
                                                     </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
 
-                                                                <div class="flex-shrink-0 user-img align-self-center me-3">
-                                                                    <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-sm" alt="">
-                                                                    <span class="user-status"></span>
-                                                                </div>
-
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">Marshall Wilson</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane" id="groups">
-                                        <div class="chat-message-list" data-simplebar>
-                                            <div class="pt-3">
-                                                <div class="px-3">
-                                                    <h5 class="font-size-14 mb-3">Groups</h5>
-                                                </div>
-                                                <ul class="list-unstyled chat-list">
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 avatar-sm me-3">
-                                                                    <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                                        G
-                                                                    </span>
-                                                                </div>
 
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="font-size-13 mb-0">General</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 avatar-sm me-3">
-                                                                    <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                                        R
-                                                                    </span>
-                                                                </div>
-
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="font-size-13 mb-0">Reporting</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 avatar-sm me-3">
-                                                                    <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                                        M
-                                                                    </span>
-                                                                </div>
-
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="font-size-13 mb-0">Meeting</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 avatar-sm me-3">
-                                                                    <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                                        A
-                                                                    </span>
-                                                                </div>
-
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="font-size-13 mb-0">Project A</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 avatar-sm me-3">
-                                                                    <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                                                        B
-                                                                    </span>
-                                                                </div>
-
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="font-size-13 mb-0">Project B</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane" id="contacts">
-                                        <div class="chat-message-list" data-simplebar>
-                                            <div class="pt-3">
-                                                <div class="px-3">
-                                                    <h5 class="font-size-14 mb-3">Contacts</h5>
-                                                </div>
-
-                                                <div>
-                                                    <div>
-                                                        <div class="px-3 contact-list">A</div>
-
-                                                        <ul class="list-unstyled chat-list">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <h5 class="font-size-13 mb-0">Adam Miller</h5>
-                                                                </a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#">
-                                                                    <h5 class="font-size-13 mb-0">Alfonso Fisher</h5>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="mt-4">
-                                                        <div class="px-3 contact-list">B</div>
-
-                                                        <ul class="list-unstyled chat-list">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <h5 class="font-size-13 mb-0">Bonnie Harney</h5>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="mt-4">
-                                                        <div class="px-3 contact-list">C</div>
-
-                                                        <ul class="list-unstyled chat-list">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <h5 class="font-size-13 mb-0">Charles Brown</h5>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <h5 class="font-size-13 mb-0">Carmella Jones</h5>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <h5 class="font-size-13 mb-0">Carrie Williams</h5>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="mt-4">
-                                                        <div class="px-3 contact-list">D</div>
-
-                                                        <ul class="list-unstyled chat-list">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <h5 class="font-size-13 mb-0">Dolores Minter</h5>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -490,209 +200,39 @@
                                             </div>
                                         </li>
 
-                                        <li class="right">
-                                            <div class="conversation-list">
-                                                <div class="d-flex">
-                                                    <div class="flex-1">
-                                                        <div class="ctext-wrap">
-                                                            <div class="ctext-wrap-content">
-                                                                <div class="conversation-name"><span class="time">10:02</span></div>
-                                                                <p class="mb-0 text-start">Hi Martin, Glad to hear from you, I'm fine,what about you? and how it's going with the velocity website?
-                                                                    </br>
-                                                                    Of course I will help with this project
-                                                                </p>
 
-                                                            </div>
-                                                            <div class="dropdown align-self-start">
-                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#">Copy</a>
-                                                                    <a class="dropdown-item" href="#">Save</a>
-                                                                    <a class="dropdown-item" href="#">Forward</a>
-                                                                    <a class="dropdown-item" href="#">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar" alt="">
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-
-                                        <li>
-                                            <div class="conversation-list">
-                                                <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar" alt="">
-                                                    <div class="flex-1">
-                                                        <div class="ctext-wrap">
-                                                            <div class="ctext-wrap-content">
-                                                                <div class="conversation-name"><span class="time">10:04</span></div>
-                                                                <p class="mb-0">
-                                                                    Super, I will get you the new brief for our own site over to you this evening, so you have time to read over I'm good thank you!
-                                                                </p>
-                                                            </div>
-                                                            <div class="dropdown align-self-start">
-                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#">Copy</a>
-                                                                    <a class="dropdown-item" href="#">Save</a>
-                                                                    <a class="dropdown-item" href="#">Forward</a>
-                                                                    <a class="dropdown-item" href="#">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-
-                                        <li class="right">
-                                            <div class="conversation-list">
-                                                <div class="d-flex">
-                                                    <div class="flex-1">
-                                                        <div class="ctext-wrap">
-                                                            <div class="ctext-wrap-content">
-                                                                <div class="conversation-name"><span class="time">10:08</span></div>
-                                                                <p class="mb-0 text-start">
-                                                                    Of course I can, just catching up with Steve on it and i'll write it out. Speak tomorrow! Let me know if you have any questions!
-                                                                </p>
-
-                                                                <p class="mb-0 text-start mt-2">
-                                                                    img-1.jpg & img-2.jpg images for a New Projects
-                                                                </p>
-
-                                                                <ul class="list-inline message-img mt-2 mb-0">
-                                                                    <li class="list-inline-item message-img-list">
-                                                                        <a class="d-inline-block" href="#">
-                                                                            <img src="assets/images/small/img-1.jpg" alt="" class="rounded img-thumbnail">
-                                                                        </a>
-                                                                    </li>
-
-                                                                    <li class="list-inline-item message-img-list">
-                                                                        <a class="d-inline-block" href="#">
-                                                                            <img src="assets/images/small/img-2.jpg" alt="" class="rounded img-thumbnail">
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div class="dropdown align-self-start">
-                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#">Copy</a>
-                                                                    <a class="dropdown-item" href="#">Save</a>
-                                                                    <a class="dropdown-item" href="#">Forward</a>
-                                                                    <a class="dropdown-item" href="#">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar" alt="">
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="conversation-list">
-                                                <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar" alt="">
-                                                    <div class="flex-1">
-                                                        <div class="ctext-wrap">
-                                                            <div class="ctext-wrap-content">
-                                                                <div class="conversation-name"><span class="time">10:06</span></div>
-                                                                <p class="mb-0">
-                                                                    Thank You very much, I am waiting Project.
-                                                                </p>
-                                                            </div>
-                                                            <div class="dropdown align-self-start">
-                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#">Copy</a>
-                                                                    <a class="dropdown-item" href="#">Save</a>
-                                                                    <a class="dropdown-item" href="#">Forward</a>
-                                                                    <a class="dropdown-item" href="#">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-
-                                        <li class="right">
-                                            <div class="conversation-list">
-                                                <div class="d-flex">
-                                                    <div class="flex-1">
-                                                        <div class="ctext-wrap">
-                                                            <div class="ctext-wrap-content">
-                                                                <div class="conversation-name"><span class="time">10:08</span></div>
-                                                                <p class="mb-0 text-start">
-                                                                    When someone thanks us, our automatic response is to say, “You’re welcome.” This is something that we have
-                                                                    learned from our parents and family and have been doing for a long time.
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="dropdown align-self-start">
-                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#">Copy</a>
-                                                                    <a class="dropdown-item" href="#">Save</a>
-                                                                    <a class="dropdown-item" href="#">Forward</a>
-                                                                    <a class="dropdown-item" href="#">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar" alt="">
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
                                 </div>
 
                                 <div class="p-3 border-top">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control border bg-soft-light" placeholder="Enter Message...">
+                                    
+                                    <form onsubmit="return sendMessage();">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="position-relative">
+                                                    <textarea id="message" type="text" class="form-control border bg-soft-light" placeholder="Enter Message...">
+</textarea>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <button type="submit" class="btn btn-primary chat-send w-md waves-effect waves-light"><span class="d-none d-sm-inline-block me-2">Send</span> <i class="mdi mdi-send float-end"></i></button>
-                                        </div>
-                                    </div>
+                                            <div class="col-auto">
+                                                <button id="submit" type="submit" class="btn btn-primary chat-send w-md waves-effect waves-light"><span class="d-none d-sm-inline-block me-2">Send</span> <i class="mdi mdi-send float-end"></i></button>
+                                            </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <!-- end user chat -->
                     </div>
-                    <!-- end row -->
-
+                    <!-- end user chat -->
                 </div>
-                <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
+                <!-- end row -->
 
-            <?php include('include/footer.php'); ?>
+            </div>
+            <!-- container-fluid -->
         </div>
-        <!-- end main content-->
+        <!-- End Page-content -->
+
+        <?php include('include/footer.php'); ?>
+    </div>
+    <!-- end main content-->
 
     </div>
     <!-- END layout-wrapper -->
@@ -715,7 +255,36 @@
 
 
     <?php include('include/footerscripts.php'); ?>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js">
+        // Import the functions you need from the SDKs you need
+        function sendMessage() {
+            var message = document.getElementById("message").value;
+            firebase.database().ref("messages").push().set({
+                "sender": myName,
+                "message": message
+            });
+            return false;
+        }
 
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDu_RwQLzNddw82ACqJFsBrlIpSc_ccYOI",
+            authDomain: "isocialwalkuser.firebaseapp.com",
+            projectId: "isocialwalkuser",
+            storageBucket: "isocialwalkuser.appspot.com",
+            messagingSenderId: "947751571419",
+            appId: "1:947751571419:web:64ec9c3a2607c41e1ea1fe"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        var myName = prompt("Enter your name");
+    </script>
 </body>
 
 
