@@ -6,6 +6,7 @@
     <div id="layout-wrapper">
         <?php include('include/header.php'); ?>
 
+        <?php include('include/functions.php'); ?>
 
         <div class="vertical-menu">
 
@@ -61,6 +62,26 @@
                                                         <div class="card-header">
                                                             <h3 class="card-title mb-0 text-center">Blocked User </h4>
                                                         </div>
+
+                                                        <?php $id = $_GET['id'];
+                                                        $sql = "SELECT *
+                                                        FROM users
+                                                        INNER JOIN reportusers ON users.id = reportusers.report_user where report_user='$id'";
+                                                        $query = mysqli_query($conn, $sql);
+                                                        if ($query) {
+                                                            while ($row = mysqli_fetch_assoc($query)) {
+                                                                $first_name = $row['first_name'];
+                                                                $user_id = $row['reported_by'];
+                                                                $last_name = $row['last_name'];
+                                                                $email = $row['email'];
+                                                                $active_watch = $row['active_watch'];
+                                                                $profile_image = $row['profile_image'];
+                                                                $phone_no = $row['phoneno'];
+                                                                $comments = $row['comments'];
+                                                                $reported_by = $row['reported_by'];
+                                                            }
+                                                        }
+                                                        ?>
                                                         <div class="card-body">
 
                                                             <div class="row">
@@ -79,7 +100,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">User Name</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            John
+                                                                            <?php echo $first_name . ' ' . $last_name; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -91,7 +112,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold"> Email</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            John@gmail.com
+                                                                            <?php echo $email; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -102,7 +123,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">Phone No</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            0332-2943034
+                                                                            <?php echo $phone_no; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -113,7 +134,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold">Device Token</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            3212345
+                                                                            <?php echo $active_watch; ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -125,7 +146,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold"> Device Connected</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12"> Mi Band 6</div>
+                                                                            <div class="badge badge-soft-success font-size-12"> <?php echo $active_watch; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -147,7 +168,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold"> Comments</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">XYZ</div>
+                                                                            <div class="badge badge-soft-danger font-size-12"><?php echo $comments; ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -158,7 +179,7 @@
                                                                     <div class="mb-3" style="display:flex;">
                                                                         <div class="col-md-6 text-center text-bold"> Blocked By</div>
                                                                         <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">ABC</div>
+                                                                            <div class="badge badge-soft-danger font-size-12"> <?php echo getname($user_id); ?> </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -166,7 +187,9 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="offset-md-9 offset-9 col-2">
-                                                                    <input onclick="change()" type="button" class="btn btn-sm bg-primary text-white" value="Blocked" id="myButton1"></input>
+                                                                    <a href="users\blockuser.php?reporteduserid=<?php echo $id; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
+                                                                        Block
+                                                                    </a>
                                                                 </div>
                                                             </div>
 

@@ -14,7 +14,7 @@
         $result1 = mysqli_query($conn, $sql1);
         while ($row = mysqli_fetch_assoc($result1)) {
             $name = $row['name'];
-            $challengeimage = $row['image'];
+            $image = $row['image'];
             $challenge_type = $row['challenge_type'];
             $challenge_visibility = $row['challenge_visibility'];
             $challenge_privacy = $row['challenge_privacy'];
@@ -30,6 +30,7 @@
         while ($row = mysqli_fetch_assoc($result1)) {
             $first_name = $row['first_name'];
             $last_name = $row['last_name'];
+            $profile_image = $row['profile_image'];
             $email = $row['email'];
 
             $phoneno = $row['phoneno'];
@@ -97,8 +98,15 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3 text-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                        <?php if ($image == '') {
 
+                                                                            echo '<div class="icon-badge rounded-circle text-center fs-5 bg-info text-white" style="height:100px; width:100px;">' .
+                                                                                "No Image Uploded" . '</div>';
+                                                                        } else {
+                                                                            echo '
+<img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $image . '"
+alt="Header Avatar">';
+                                                                        } ?>
                                                                     </div>
                                                                 </div>
 
@@ -194,48 +202,31 @@
                                                                 </div>
 
                                                             </div>
+
                                                             <div class="row">
                                                                 <div class="col-md-12 col-12">
                                                                     <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">Members</div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="avatar-group">
-                                                                                <div class="avatar-group-item">
-                                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="avatar-group-item">
-                                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="avatar-group-item">
-                                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                                        <div class="avatar-sm">
-                                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                                A
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    </a>
-                                                                                </div>
+                                                                        <div class="col-md-6 text-center text-bold"> Challenges Participants</div>
+                                                                        <div class="col-md-6 text-start">
+
+
+                                                                            <div class="avatar-group-item">
+                                                                                <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
+                                                                                    <div class="avatar-sm">
+                                                                                        <span class="avatar-title rounded-circle bg-success text-white font-size-16 text-center" style="width:70px; height:70px;">
+                                                                                            View Members
+                                                                                        </span>
+                                                                                    </div>
+
+
+                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">Status</div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">Requested</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
 
-                                                            </div>
+
                                                             <div>
 
                                                             </div>
@@ -249,6 +240,62 @@
 
                                         </div>
                                     </div>
+                                    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-center">Challenge Members</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <?php
+                                                    $sql = "Select * from challenges_participants WHERE challenge_id='$challenge_id' AND status='membered' ";
+
+                                                    $result = mysqli_query($conn, $sql);
+
+                                                    $rowcount = mysqli_num_rows($result);
+                                                    if ($rowcount > 0) {
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                            $user_id =  $row['user_id'];
+                                                            $sql1 = "Select * from users WHERE id='$user_id'  ";
+
+                                                            $result1 = mysqli_query($conn, $sql1);
+
+                                                            $rowcount1 = mysqli_num_rows($result1);
+                                                            if ($rowcount1 > 0) {
+                                                                while ($row1 = mysqli_fetch_assoc($result1)) {
+                                                                    $image =  $row1['profile_image'];
+
+                                                    ?>
+
+
+
+
+                                                                    <div class="row">
+                                                                        <div class="col-12" style="display:flex">
+                                                                            <div class="col-6 text-center">
+                                                                                <?php echo $name = getname($user_id); ?>
+                                                                            </div>
+                                                                            <div class="col-6 text-center">
+
+                                                                                <?php echo '
+<img style="height:50px; width:50px;" class="rounded-circle avatar-sm" src="api/' . $image . '" 
+alt="Header Avatar">'; ?>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="hr mb-2 mt-2">
+
+                                                                    </div>
+                                                    <?php }
+                                                            }
+                                                        }
+                                                    } ?>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
 
 
 
@@ -275,53 +322,6 @@
 
 
 
-    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center">Group Members</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <?php for ($i = 0; $i < 4; $i++) { ?>
-
-                        <div class="row">
-
-                            <div class="col-12" style="display:flex">
-                                <div class="col-6 text-center">
-                                    Fatima
-                                </div>
-                                <div class="col-6 text-center">
-
-                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12" style="display:flex">
-                                <div class="col-6 text-center">
-                                    John
-                                </div>
-                                <div class="col-6 text-center">
-
-                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hr mb-2 mt-2">
-
-                        </div>
-                    <?php } ?>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>

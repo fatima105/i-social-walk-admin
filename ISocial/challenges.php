@@ -527,20 +527,27 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <div class="">
-                                        <div class="row mb-2">
-                                            <div class=" col-xl-3 col-md-12">
-                                                <div class="pb-3 pb-xl-0 mt-5">
-                                                    <h5>All Challenges</h5>
-                                                </div>
+                                    <div class="row mb-2">
+                                        <div class=" col-xl-3 col-md-12">
+                                            <div class="pb-3 pb-xl-0 mt-5">
+                                                <h5>All Challenges</h5>
                                             </div>
-
-
                                         </div>
+                                        <div class=" col-xl-3 col-md-12">
+                                            <div class="pb-3 pb-xl-0">
+                                                <form class="email-search">
+                                                    <div class="position-relative mt-5">
+                                                        <input class="form-control ps-5" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Challenges">
+                                                        <span class="bx bx-search font-size-18"></span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
+                                        <table id="myTable" class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
                                             <thead>
                                                 <tr>
 
@@ -568,8 +575,15 @@
                                                         <td><?php echo getname($user_id); ?></td>
                                                         <td style="width: 190px;">
                                                             <div class="d-flex align-items-center">
-                                                                <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                <?php if ($row['image'] == '') {
 
+                                                                    echo '<div class="icon-badge rounded-circle text-center fs-5 bg-info text-white" style="height:100px; width:100px;">' .
+                                                                        "No Image Uploded" . '</div>';
+                                                                } else {
+                                                                    echo '
+<img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $row['image'] . '"
+alt="Header Avatar">';
+                                                                } ?>
                                                             </div>
                                                         </td>
 
@@ -645,6 +659,28 @@
 
 
     <?php include('include/footerscripts.php'); ?>
+    <script>
+        function myFunction() {
+
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 
 

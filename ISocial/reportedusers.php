@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php include('include/scripts.php'); ?>
+<?php include('include/functions.php'); ?>
 
 <body>
     <div id="layout-wrapper">
@@ -78,11 +79,16 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    for ($i = 0; $i <= 10; $i++) { ?>
+                                                    $sql = "SELECT *
+                                                 FROM users
+                                                 INNER JOIN reportusers ON users.id = reportusers.report_user;";
+                                                    $query1 = mysqli_query($conn, $sql);
+                                                    while ($row = mysqli_fetch_assoc($query1)) {
+                                                        $user_id = $row['reported_by'];
+                                                        $report_user = $row['report_user'];
+                                                    ?> <tr>
 
-                                                        <tr>
-
-                                                            <td>Silene Oliveira</td>
+                                                            <td><?php echo $row['first_name'] . '  ' . $row['last_name']; ?> </td>
 
                                                             <td style="width: 190px;">
                                                                 <div class="d-flex align-items-center">
@@ -91,14 +97,16 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div class="badge badge-soft-success font-size-12"> Mi Band 6</div>
+                                                                <div class="badge badge-soft-success font-size-12"> <?php echo $row['active_watch']; ?></div>
                                                             </td>
                                                             <td>
-                                                                30 Dec,2021
+                                                                <?php echo $row['created_date']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo getname($user_id); ?>
                                                             </td>
 
-                                                            <td>XYZ</td>
-                                                            <td>Lorem ipsum dolor, nesciunt alias! Iste iure debitis nemo possimus labore quaerat?
+                                                            <td><?php echo $row['comments']; ?>
                                                             <td>
                                                                 <div class="dropdown">
                                                                     <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
@@ -107,7 +115,7 @@
 
                                                                     <div class="dropdown-menu dropdown-menu-end">
 
-                                                                        <a href="reportedusersview.php" class="dropdown-item">view</a>
+                                                                        <a href="reportedusersview.php?id=<?php echo $report_user; ?>" class="dropdown-item">view</a>
 
                                                                     </div>
                                                                 </div>

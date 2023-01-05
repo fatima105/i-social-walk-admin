@@ -95,8 +95,15 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3 text-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                        <?php if ($image == '') {
 
+                                                                            echo '<div class="icon-badge rounded-circle text-center fs-5 bg-info text-white" style="height:100px; width:100px;">' .
+                                                                                "No Image Uploded" . '</div>';
+                                                                        } else {
+                                                                            echo '
+<img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $image . '"
+alt="Header Avatar">';
+                                                                        } ?>
                                                                     </div>
                                                                 </div>
 
