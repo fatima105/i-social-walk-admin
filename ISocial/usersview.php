@@ -15,6 +15,7 @@
             $last_name = $row['last_name'];
             $email = $row['email'];
             $phoneno = $row['phoneno'];
+            $profile_image = $row['profile_image'];
             $image = $row['image'];
             $device_token = $row['device_token'];
             $active_watch = $row['active_watch'];
@@ -72,15 +73,22 @@
 
                                                     <div class="card">
                                                         <div class="card-header">
-                                                            <h3 class="card-title mb-0 text-center">User Profile </h4>
+                                                            <h3 class="card-title mb-0 text-center">User Profile </h3>
                                                         </div>
                                                         <div class="card-body">
 
                                                             <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3 text-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                <div class="col-md-12 " style="align-items:center;display:flex;">
+                                                                    <div class="mb-3 ">
+                                                                        <?php if ($profile_image == '') {
 
+                                                                            echo '<div class=" text-center text-dark fs-5" style="height:100px; width:100px;">' .
+                                                                                "No Image Uploded" . '</div>';
+                                                                        } else {
+                                                                            echo '
+<img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $profile_image . '"
+alt="Header Avatar">';
+                                                                        } ?>
                                                                     </div>
                                                                 </div>
 
@@ -176,7 +184,7 @@
                                         <div class="row mb-2">
                                             <div class="col-xl-4 col-12">
                                                 <div class="pb-3 pb-xl-0">
-                                                    <h2 class="text-sm">User Groups</h2>
+                                                    <h3 class="text-sm">User Groups</h3>
                                                 </div>
                                             </div>
                                             <div class="col-xl-8 col-12">
@@ -272,7 +280,7 @@ alt="Header Avatar">';
                         <div class="col-xl-12 col-12 col-md-12">
                             <div class="card">
                                 <div class="card-header ">
-                                    <h5 class=" card-title mb-0">Average Daily Summary</h5>
+                                    <h3 class=" card-title mb-0">Average Daily Summary</h3>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-centered align-middle table-nowrap mb-0 table-check">
@@ -349,7 +357,7 @@ alt="Header Avatar">';
                                         <div class="row mb-2">
                                             <div class="col-xl-4 col-12">
                                                 <div class="pb-3 pb-xl-0">
-                                                    <h4 class="text-sm">User Activity</h4>
+                                                    <h3 class="text-sm">User Activity</h3>
                                                 </div>
                                             </div>
                                             <div class="col-xl-8 col-12">
@@ -420,7 +428,7 @@ alt="Header Avatar">';
                                         <div class="row mb-2">
                                             <div class="col-xl-4 col-12">
                                                 <div class="pb-3 pb-xl-0">
-                                                    <h4 class="text-sm">Challenges</h4>
+                                                    <h3 class="text-sm">Challenges</h3>
                                                 </div>
                                             </div>
                                             <div class="col-xl-8 col-12">

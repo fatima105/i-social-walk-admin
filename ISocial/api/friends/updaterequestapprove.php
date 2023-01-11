@@ -7,16 +7,17 @@ $DecodeData = json_decode($EncodeData, true);
 $this_user_id = $DecodeData['this_user_id'];
 $friend_user_id = $DecodeData['friend_user_id'];
 $noti_type_id = $DecodeData['noti_type_id'];
-$date = date('d-m-y');
-$sql = "UPDATE friends_notifications SET status='approved' WHERE noti_type_id='$noti_type_id'";
+$date = $DecodeData['date'];
+
+$sql = "UPDATE friends_notifications SET status='friends' WHERE noti_type_id='$noti_type_id'";
 
 $run1 = mysqli_query($conn, $sql);
 
-$sql = "UPDATE friend_list SET status='friends' WHERE this_user_id='$this_user_id' AND friend_user_id='$friend_user_id'";
+$sql = "UPDATE friend_list SET status='friends' WHERE this_user_id='$friend_user_id' AND friend_user_id='$this_user_id'";
 
 $run1 = mysqli_query($conn, $sql);
 if ($run1) {
-    $sqlquery = "INSERT INTO friend_list (this_user_id,friend_user_id,date,status,noti_type_id)VALUES('$friend_user_id','$this_user_id','$date','friends','$noti_type_id')";
+    $sqlquery = "INSERT INTO friend_list (this_user_id,friend_user_id,date,status,noti_type_id)VALUES('$this_user_id','$friend_user_id','$date','friends','$noti_type_id')";
     $runquery = mysqli_query($conn, $sqlquery);
     $response[] = array(
         "your id" => $this_user_id,
@@ -38,27 +39,29 @@ if ($run1) {
 $noti_type = "friends to friends";
 $uniqid1 = uniqid();
 
-$sqlquery = "insert into notification(noti_type,uniqid,from_id,to_id,date,status) VALUES ('$noti_type','$uniqid1','$friend_user_id','$this_user_id','$date','unread')";
+$sqlquery = "insert into notification(noti_type,uniqid,from_id,to_id,date,status) VALUES ('$noti_type','$uniqid1','$this_user_id','$friend_user_id','$date','unread')";
 
-$run1 = mysqli_query($conn, $sqlquery);
-$sqlfinal = "Select * from notification where uniqid='$uniqid1'";
-$runfinal = mysqli_query($conn, $sqlfinal);
-if ($runfinal) {
-    while ($row = mysqli_fetch_assoc($runfinal)) {
-        $id = $row['id'];
-        $response[] = array(
-            "to_id" => $row['to_id'],
-            "from_id" => $row['from_id'],
+$run3 = mysqli_query($conn, $sqlquery);
+if ($run3) {
+    $sqlfinal = "Select * from notification where uniqid='$uniqid1'";
+    $runfinal = mysqli_query($conn, $sqlfinal);
+    if ($runfinal) {
+        while ($row = mysqli_fetch_assoc($runfinal)) {
+            $id = $row['id'];
+            $response[] = array(
+                "to_id" => $row['to_id'],
+                "from_id" => $row['from_id'],
 
-            "Notification id" => $row['id'],
+                "Notification id" => $row['id'],
 
-            "message" => 'Friend Request Accepted ',
-            "error" => false
-        );
-    }
-    $newquery = "Insert into friends_notifications(noti_type_id,date,status)Value('$id','$date','approved')";
-    $finalquery = mysqli_query($conn, $newquery);
-    if ($finalquery) {
+                "message" => 'Friend Request Accepted ',
+                "error" => false
+            );
+        }
+        $newquery = "Insert into friends_notifications(noti_type_id,date,status)Value('$id','$date','approved')";
+        $finalquery = mysqli_query($conn, $newquery);
+        if ($finalquery) {
+        }
     }
 }
 // $final = "Insert into friends_notifications(noti_type_id,date,status)Values('$uniqid1','$date','approved')";

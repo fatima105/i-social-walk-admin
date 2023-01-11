@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
-<?php include('include/scripts.php'); ?>
+<?php include('include/scripts.php');
+session_start();
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+} else {
+} ?>
 
 <body>
     <div id="layout-wrapper">
@@ -87,20 +92,27 @@
                                                     <h5 class="font-size-14 mb-3">Recent</h5>
                                                 </div>
                                                 <ul class="list-unstyled chat-list p-3">
+                                                    <?php $sql2 = "SELECT * from users ";
+                                                    $query = mysqli_query($conn, $sql2); ?>
 
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 user-img away align-self-center me-3">
-                                                                    <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="">
-                                                                    <span class="user-status"></span>
-                                                                </div>
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <?php while ($row = mysqli_fetch_assoc($query)) { ?>
 
-                                                                <div class="flex-grow-1 overflow-hidden">
-                                                                    <h5 class="text-truncate font-size-14 mb-0">Katie Olson</h5>
-                                                                </div>
-                                                            </div>
-                                                        </a>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="flex-shrink-0 user-img away align-self-center me-3">
+                                                                            <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="">
+                                                                            <span class="user-status"></span>
+                                                                        </div>
+
+                                                                        <h5 class="text-truncate font-size-14 mb-0"><?php echo $row['first_name'] . '' . $row['last_name']; ?></h5>
+
+                                                                    <?php } ?>
+                                                                    </div>
+
+                                                    </div>
+                                                    </a>
                                                     </li>
 
                                                 </ul>
@@ -170,53 +182,32 @@
                                         <li class="chat-day-title">
                                             <span class="title">Today</span>
                                         </li>
-                                        <li>
-                                            <div class="conversation-list">
-                                                <div class="d-flex">
-                                                    <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar" alt="">
-                                                    <div class="flex-1">
-                                                        <div class="ctext-wrap">
-                                                            <div class="ctext-wrap-content">
-                                                                <div class="conversation-name"><span class="time">10:00</span></div>
-                                                                <p class="mb-0">Hi Jordan! </br>
-                                                                    Feels like it's been a while! Home are you? Do you
-                                                                    have ant time for the remainder of the week to help me with an ongoing project?</p>
 
-                                                            </div>
-                                                            <div class="dropdown align-self-start">
-                                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#">Copy</a>
-                                                                    <a class="dropdown-item" href="#">Save</a>
-                                                                    <a class="dropdown-item" href="#">Forward</a>
-                                                                    <a class="dropdown-item" href="#">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
 
 
                                 </div>
 
                                 <div class="p-3 border-top">
-                                    
-                                    <form onsubmit="return sendMessage();">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="position-relative">
-                                                    <textarea id="message" type="text" class="form-control border bg-soft-light" placeholder="Enter Message...">
+
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="position-relative">
+                                                <textarea id="message" type="text" class="form-control border bg-soft-light" placeholder="Enter Message...">
 </textarea>
-                                                </div>
+
+                                                <input id="id" type="text" value="<?php echo "hi" . $id; ?>" class="form-control border bg-soft-light" />
+
+
+
                                             </div>
-                                            <div class="col-auto">
-                                                <button id="submit" type="submit" class="btn btn-primary chat-send w-md waves-effect waves-light"><span class="d-none d-sm-inline-block me-2">Send</span> <i class="mdi mdi-send float-end"></i></button>
-                                            </div>
-                                    </form>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button id="Insbtn" class="btn btn-primary chat-send w-md waves-effect waves-light">Send</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -255,35 +246,59 @@
 
 
     <?php include('include/footerscripts.php'); ?>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js">
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js">
-        // Import the functions you need from the SDKs you need
-        function sendMessage() {
-            var message = document.getElementById("message").value;
-            firebase.database().ref("messages").push().set({
-                "sender": myName,
-                "message": message
-            });
-            return false;
-        }
 
+    <script type="module">
+        var date = new Date();
+        // Import the functions you need from the SDKs you need
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyDu_RwQLzNddw82ACqJFsBrlIpSc_ccYOI",
-            authDomain: "isocialwalkuser.firebaseapp.com",
-            projectId: "isocialwalkuser",
-            storageBucket: "isocialwalkuser.appspot.com",
-            messagingSenderId: "947751571419",
-            appId: "1:947751571419:web:64ec9c3a2607c41e1ea1fe"
+            apiKey: "AIzaSyDt-D0zUY2siWNpb2c0l0K7Qhj-WlOYYJg",
+            authDomain: "chatfinalapp-2cd0c.firebaseapp.com",
+            projectId: "chatfinalapp-2cd0c",
+            storageBucket: "chatfinalapp-2cd0c.appspot.com",
+            messagingSenderId: "686354238795",
+            appId: "1:686354238795:web:c777026acbfe2703942cce"
         };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        var myName = prompt("Enter your name");
+        import {
+            getDatabase,
+            ref,
+            set,
+            child,
+            update,
+            remove
+        }
+        from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        const db = getDatabase();
+
+        document.getElementById("p1").innerHTML = date;
+        var message = document.getElementById("message");
+        var id = document.getElementById("id");
+        var date = new Date();
+        console.log("date" + date);
+        //INSERT DATA//
+        function InsertData() {
+            set(ref(db, "TheStudents/" + date.value), {
+                    message: message.value,
+                    id: id.value,
+                    date: date.value,
+                })
+                .then(() => {
+                    alert("data stored successfully");
+                })
+                .catch((error) => {
+                    alert("unsuccessfully,error" + error);
+                });
+        }
+        Insbtn.addEventListener('click', InsertData);
     </script>
 </body>
 

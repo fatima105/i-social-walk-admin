@@ -24,7 +24,7 @@
 
    <script src="assets/js/app.js"></script>
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <?php if (isset($_SESSION['status_text'])) {
+   <?php if (isset($_SESSION['status_title'])) {
 
    ?>
       <script>
@@ -36,6 +36,5 @@
          });
       </script>
    <?php unset($_SESSION['status_title']);
-      unset($_SESSION['status_text']);
-      unset($_SESSION['status_code']);
    } ?>
+   </script>

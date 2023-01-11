@@ -87,7 +87,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3 text-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                        <img class="rounded-circle avatar-sm" src="api/assets/' <?php echo $profile_image ?> '" alt="">
 
                                                                     </div>
                                                                 </div>
@@ -185,13 +185,13 @@
                                                                 </div>
 
                                                             </div>
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="offset-md-9 offset-9 col-2">
                                                                     <a href="users\blockuser.php?reporteduserid=<?php echo $id; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
                                                                         Block
                                                                     </a>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
 
                                                         </div>
                                                         <!-- end card body -->

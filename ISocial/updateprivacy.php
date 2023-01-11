@@ -2,112 +2,165 @@
 <html lang="en">
 
 <?php
+
 include('include/connection.php');
+include('include/scripts.php');
+ob_start();
+include('include/header.php');
 
-include 'include/scripts.php';
-?>
-<?php
-session_start();
-if (isset($_SESSION['id'])) {
-} else {
 
-    header("location:users.php");
-    exit();
+$privacyid = $_GET['id'];
+$sqlfinal = "select * from privacy where id='$privacyid'";
+$finalquery = mysqli_query($conn, $sqlfinal); {
+    while ($row = mysqli_fetch_assoc($finalquery)) {
+        $privacy_text = $row['privacytext'];
+    }
+}
+
+if (isset($_POST['submit'])) {
+    $id = $_POST['id'];
+    $privacy_text = $_POST['privacytext'];
+    $sql = "UPDATE privacy SET
+         privacytext='$privacy_text'
+       WHERE id='$privacyid'";
+
+    $query = mysqli_query($conn, $sql);
+    if ($query) {
+        // $_SESSION['status_text'] = "Updated Successfully";
+        // $_SESSION['status_title'] = "";
+        // $_SESSION['status_code'] = "success";
+        header('location: privacypolicy.php?id=$privacyid');
+    } else {
+        // $_SESSION['status_text'] = "Privacy Policy Not Updated";
+        // $_SESSION['status_title'] = "";
+        // $_SESSION['status_code'] = "error";
+        header('location: privacypolicy.php?id=$privacyid');
+    }
 }
 ?>
 
 <body>
-    <?php
-    $id = $_GET['id'];
+    <div id="layout-wrapper">
+
+
+        <div class="vertical-menu">
+
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="index-2.html" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="assets/images/logo-dark-sm.png" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="assets/images/logo-dark.png" alt="" height="28">
+                    </span>
+                </a>
+
+                <a href="index-2.html" class="logo logo-light">
+                    <span class="logo-lg">
+                        <img src="assets/images/logo-light.png" alt="" height="30">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="assets/images/logo-light-sm.png" alt="" height="26">
+                    </span>
+                </a>
+            </div>
+
+            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect vertical-menu-btn">
+                <i class="bx bx-menu align-middle"></i>
+            </button>
+
+            <div data-simplebar class="sidebar-menu-scroll">
+
+                <!--- Sidemenu -->
+                <?php include('include/sidebar.php'); ?>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+        <?php include('include/leftsidebar.php'); ?>
+
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
 
 
 
+                    <div class="row">
+                        <div class="col-3">
 
-    if (isset($_POST['submit'])) {
-        $id = $_POST['id'];
-        $privacytext = $_POST['privacytext'];
-        $sql = "UPDATE privacy SET 
-         privacytext='$privacytext' 
-    
-       WHERE id='$id'";
-        $query = mysqli_query($conn, $sql);
-        if ($query) {
-            $_SESSION['status_text'] = "privacy olicy  Updated Successfully";
-            $_SESSION['status_title'] = "";
-            $_SESSION['status_code'] = "success";
-            header('location: privacypolicy.php');
-        } else {
-            $_SESSION['status_text'] = "Contact Not Updated";
-            $_SESSION['status_title'] = "";
-            $_SESSION['status_code'] = "error";
-            header('location: privacypolicy.php');
-        }
-    }
-
-    ?>
-
-    <body>
-
-        <div class="authentication-bg min-vh-100">
-            <div class="bg-overlay bg-light"></div>
-            <div class="container">
-                <div class="d-flex flex-column min-vh-100 px-3 pt-4">
-                    <div class="row justify-content-center my-auto">
-                        <div class="col-md-8 col-lg-6 col-xl-5">
-
-
-
+                        </div>
+                        <div class=" col-xl-6 col-6 col-md-6">
                             <div class="card">
-                                <div class="card-body p-4">
+                                <div class="card-header">
                                     <div class="text-center mt-2">
-                                        <h5>Update privacy policy!</h5>
-
+                                        <h5>Update Privacy Policy!</h5>
                                     </div>
-                                    <div class="p-2 mt-4">
-                                        <form action="" method="POST">
-
-                                            <div class="mb-3">
-                                                <label class="form-label" for="email">Privacy Policy</label>
-                                                <input type="hidden" required class="form-control" name="id" value="<?php echo $id; ?>" name="privacytext" placeholder="Type Privacy policy">
-                                                </textarea>
-                                                <div class="position-relative input-custom-icon">
-                                                    <textarea type="text" required class="form-control" id="privacytext" rows="9" name="privacytext" placeholder="Type Privacy policy">
-</textarea>
-                                                </div>
+                                    <div class="">
+                                        <form action="" class="form" id="form" method="post">
+                                            <input type="hidden" name="id" value=" <?php echo $privacyid; ?>" />
+                                            <textarea required rows="20" name="privacytext"><?php echo $privacy_text ?></textarea>
+                                            <div class="pull-right mr-40 mt-10">
+                                                <button type="submit" name="submit" id="submit" class="btn btn-success mr-10 mt-30">Submit</button>
                                             </div>
-
-
-
-
-
-                                            <div class="mt-3">
-                                                <button name="submit" class="btn btn-primary w-100 waves-effect waves-light" type="submit">Update Privacy Policy</button>
-                                            </div>
-
-
-
-                                            <!-- <div class="mt-4 text-center">
-                                            <p class="mb-0">Don't have an account ? <a href="auth-register.html" class="fw-medium text-primary"> Signup now </a> </p>
-                                        </div> -->
                                         </form>
+
                                     </div>
-
                                 </div>
+
+
+
+
+
+
+
+                                <!-- end card body -->
                             </div>
+                            <!-- end card -->
+                        </div>
 
-                        </div><!-- end col -->
-                    </div><!-- end row -->
-
+                    </div>
+                    <!-- end row -->
 
                 </div>
-            </div><!-- end container -->
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <?php include('include/footer.php'); ?>
         </div>
-        <!-- end authentication section -->
-        <?php include('include/footerscripts.php'); ?>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
 
 
-    </body>
 
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- chat offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasActivity" aria-labelledby="offcanvasActivityLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 id="offcanvasActivityLabel">Offcanvas right</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            ...
+        </div>
+    </div>
+
+
+    <?php include('include/footerscripts.php'); ?>
+    <script src="https://cdn.tiny.cloud/1/yo9e1ts5xtf3knyjm2uck5okrzzgtapaef9txyy5qk62bfyp/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
+</body>
 
 
 </html>

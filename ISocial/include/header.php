@@ -1,5 +1,5 @@
 <?php
-include('include/connection.php');
+include('connection.php');
 session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
@@ -16,8 +16,8 @@ if (isset($_SESSION['id'])) {
                     $first_name = $row['first_name'];
                     $last_name = $row['last_name'];
                     $email = $row['email'];
+
                     $active_watch = $row['active_watch'];
-                    $profile_image = $row['profile_image'];
 
                     $phone_no = $row['phoneno'];
                 }
@@ -64,11 +64,20 @@ if (isset($_SESSION['id'])) {
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-center d-flex align-items-center" id="page-header-user-dropdown-v" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php if ($profile_image == '') {
+                    <?php $sql12 = "Select profile_image from users where id='$id'";
+                    $query12 = mysqli_query($conn, $sql12);
+                    if ($query12) {
+                        if (mysqli_num_rows($query12)) {
+                            while ($row = mysqli_fetch_assoc($query12)) {
+                                $profile_image1 = $row['profile_image'];
+                            }
+                        }
+                    }
+                    if ($profile_image1 == '') {
                         echo '<div class="icon-badge rounded-circle text-center p-3 fs-5 bg-info text-white" style="height:50px; width:50px;">' . strtoupper(substr($first_name, 0, 1)) . '</div>';
                     } else {
                         echo '
-                        <img class="rounded-circle header-profile-user " src="api/' . $profile_image . '"
+                        <img class="rounded-circle header-profile-user " src="api/' . $profile_image1 . '"
                         alt="Header Avatar">';
                     } ?>
                     <span class="d-none d-xl-inline-block ms-2 fw-medium font-size-15"><?php echo  $first_name . '  ' . $last_name; ?></span>

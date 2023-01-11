@@ -78,7 +78,7 @@ include('include/connection.php'); ?>
                                                 <div class="pb-3 pb-xl-0">
                                                     <form class="email-search">
                                                         <div class="position-relative mt-5">
-                                                            <input class="form-control ps-5" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Groups">
+                                                            <input class="border border-dark form-control ps-5 border-1 border-rounded" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Groups">
                                                             <span class="bx bx-search font-size-18"></span>
                                                         </div>
                                                     </form>
@@ -122,8 +122,8 @@ include('include/connection.php'); ?>
                                                             <div class="d-flex align-items-center">
                                                                 <?php if ($image == '') {
 
-                                                                    echo '<div class="icon-badge rounded-circle text-center fs-5 bg-info text-white" style="height:100px; width:100px;">' .
-                                                                        "No Image Uploded" . '</div>';
+                                                                    echo '<div class=" text-dark fs-5" style="height:100px; width:100px;">' .
+                                                                        "No image found" . '</div>';
                                                                 } else {
                                                                     echo '
 <img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $image . '"

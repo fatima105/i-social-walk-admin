@@ -5,8 +5,9 @@
 include('include/functions.php'); ?>
 
 <body>
+    <?php include('include/header.php'); ?>
     <div id="layout-wrapper">
-        <?php include('include/header.php');
+        <?php
         $group_id = $_GET['group_id']; ?>
 
         <?php
@@ -89,8 +90,15 @@ include('include/functions.php'); ?>
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3 text-center">
-                                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                        <?php if ($image == '') {
 
+                                                                            echo '<div class=" text-center  text-dark" style="height:100px; width:100px;">' .
+                                                                                "No Image Uploded" . '</div>';
+                                                                        } else {
+                                                                            echo '
+<img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $image . '"
+alt="Header Avatar">';
+                                                                        } ?>
                                                                     </div>
                                                                 </div>
 
@@ -176,7 +184,7 @@ include('include/functions.php'); ?>
                                                                             <div class="avatar-group-item">
                                                                                 <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
                                                                                     <div class="avatar-sm">
-                                                                                        <span class="avatar-title rounded-circle bg-success text-white font-size-16 text-center" style="width:70px; height:70px;">
+                                                                                        <span class="avatar-title rounded-circle bg-success text-white font-size-16 text-center p-5" style="width:60px; height:60px;">
                                                                                             View Members
                                                                                         </span>
                                                                                     </div>

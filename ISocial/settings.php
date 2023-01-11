@@ -10,35 +10,30 @@ include('include/header.php');
 if (isset($_POST['Update'])) {
     $newpassword = $_POST['newpassword'];
     $confirmpassword = $_POST['confirmpassword'];
+
     $oldpassword = $_POST['oldpassword'];
     $opass = md5($oldpassword);
+
     $sql = "select * from users where email = '$_SESSION[email]' AND password='$opass'";
     $query = mysqli_query($conn, $sql);
     if (mysqli_num_rows($query) > 0) {
 
-        if ($newpassword != $confirmpassword) {
 
-            $_SESSION['status_text'] = "New Password & Confirm Password Does'nt Matched";
-            $_SESSION['status_title'] = "Password Does'nt Updated";
-            $_SESSION['status_code'] = "error";
+        $pass = md5($newpassword);
+        $sqll = "UPDATE users SET password='$pass' where email = '$_SESSION[email]'";
+
+        $queryl = mysqli_query($conn, $sqll);
+        if ($queryl) {
+
+            $_SESSION['status_text'] = "Password Updated";
+            $_SESSION['status_title'] = "Password Updated";
+            $_SESSION['status_code'] = "success";
         } else {
-
-            $pass = md5($newpassword);
-            $sqll = "UPDATE users SET password='$pass' where email = '$_SESSION[email]'";
-
-            $queryl = mysqli_query($conn, $sqll);
-            if ($queryl) {
-
-                $_SESSION['status_text'] = "Password Updated";
-                $_SESSION['status_title'] = "Password Updated";
-                $_SESSION['status_code'] = "success";
-            } else {
-                echo 'password not updated';
-                // $_SESSION['status_text']="Otp Not Matched";
-                // $_SESSION['status_title']="Error";
-                // $_SESSION['status_code']="error";
-                // header("location:../verify-otp.php");
-            }
+            echo 'password not updated';
+            // $_SESSION['status_text']="Otp Not Matched";
+            // $_SESSION['status_title']="Error";
+            // $_SESSION['status_code']="error";
+            // header("location:../verify-otp.php");
         }
     } else {
         $_SESSION['status_text'] = "error";

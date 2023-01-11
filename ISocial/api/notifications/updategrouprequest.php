@@ -4,6 +4,7 @@ include('../include/connection.php');
 $data = json_decode(file_get_contents("php://input"), true);
 $status = $data['status'];
 $noti_type_id = $data['noti_type_id'];
+$date = $data['date'];
 $sql = "Select * from notification where id='$noti_type_id' ";
 $query = mysqli_query($conn, $sql);
 if ($query) {
@@ -17,7 +18,7 @@ if ($query) {
 
 $noti_type = "user to group";
 $uniqid = uniqid();
-$date = date('d-m-y');
+
 $sql = "update group_notification  SET status='$status' where noti_type_id='$noti_type_id'";
 $query = mysqli_query($conn, $sql);
 if ($query) {

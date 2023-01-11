@@ -9,7 +9,7 @@
     <div id="layout-wrapper">
 
         <?php
-        session_start();
+
         include('include/scripts.php'); ?>
 
         <?php include('include/header.php');     ?>

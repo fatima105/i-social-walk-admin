@@ -86,13 +86,14 @@
                                                     while ($row = mysqli_fetch_assoc($query1)) {
                                                         $user_id = $row['reported_by'];
                                                         $report_user = $row['report_user'];
+                                                        $profile_image = $row['profile_image'];
                                                     ?> <tr>
 
                                                             <td><?php echo $row['first_name'] . '  ' . $row['last_name']; ?> </td>
 
                                                             <td style="width: 190px;">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                    <img class="rounded-circle avatar-sm" src="api/assets/' <?php echo $profile_image ?> '" alt="">
 
                                                                 </div>
                                                             </td>

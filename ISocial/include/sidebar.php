@@ -10,7 +10,7 @@
 
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="dashboard.php" data-key="t-ecommerce">Dashboard</a></li>
+                <li><a href="index.php" data-key="t-ecommerce">Dashboard</a></li>
 
             </ul>
         </li>
@@ -54,7 +54,7 @@
             </a>
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="reportedusers.php" data-key="t-basic-tables">Report Users</a></li>
-                <li><a href="reportedgroups.php" data-key="t-advanced-tables">Report Groups</a></li>
+                <!-- <li><a href="reportedgroups.php" data-key="t-advanced-tables">Report Groups</a></li> -->
                 <!-- <li><a href="reportedchallenges.php" data-key="t-advanced-tables">Report Challenges</a></li> -->
             </ul>
         </li>

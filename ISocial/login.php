@@ -2,18 +2,13 @@
 <html lang="en">
 
 <?php
+session_start();
 include('include/connection.php');
 
 include 'include/scripts.php';
 ?>
-<?php
-session_start();
-if (isset($_SESSION['id'])) {
 
-    header("location:dashboard.php");
-    exit();
-}
-?>
+
 
 <body>
 
@@ -23,7 +18,7 @@ if (isset($_SESSION['id'])) {
 
 
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['add'])) {
 
         $email = $_POST['email'];
 
@@ -38,20 +33,25 @@ if (isset($_SESSION['id'])) {
         if (mysqli_num_rows($result) == 1) {
 
             while ($data = mysqli_fetch_assoc($result)) {
+                $Role = $data['Role'];
+                if ($Role == 'A') {
 
-                $_SESSION['id'] = $data['id'];
-                $_SESSION['email'] = $data['email'];
-                $_SESSION['password'] = $data['password'];
-            }
-            $sessionid = $_SESSION['id'];
-            $email = $_SESSION['email'];
-            $password = $_SESSION['password'];
-            $Passwordd = md5($password);
-            if (isset($_POST['rememberme'])) {
-                //COOKIES for username
-                setcookie('email', $email, time() + (10 * 365 * 24 * 60 * 60));
-                //COOKIES for password
-                setcookie('password', $_POST['password'], time() + (10 * 365 * 24 * 60 * 60));
+                    $_SESSION['id'] = $data['id'];
+                    $_SESSION['email'] = $data['email'];
+                    $_SESSION['password'] = $data['password'];
+
+                    $sessionid = $_SESSION['id'];
+                    $email = $_SESSION['email'];
+                    $password = $_SESSION['password'];
+                    $Passwordd = md5($password);
+                    header("location:index.php");
+                    if (isset($_POST['rememberme'])) {
+                        //COOKIES for username
+                        setcookie('email', $email, time() + (10 * 365 * 24 * 60 * 60));
+                        //COOKIES for password
+                        setcookie('password', $_POST['password'], time() + (10 * 365 * 24 * 60 * 60));
+                    }
+                }
             }
         } else {
 
@@ -114,7 +114,7 @@ if (isset($_SESSION['id'])) {
                                             </div>
 
                                             <div class="mt-3">
-                                                <button name="submit" class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
+                                                <button name="add" class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
                                             </div>
 
 

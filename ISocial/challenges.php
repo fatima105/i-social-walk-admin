@@ -527,7 +527,7 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <div class="row mb-2">
+                                    <div class="row mb-2 ">
                                         <div class=" col-xl-3 col-md-12">
                                             <div class="pb-3 pb-xl-0 mt-5">
                                                 <h5>All Challenges</h5>
@@ -537,7 +537,7 @@
                                             <div class="pb-3 pb-xl-0">
                                                 <form class="email-search">
                                                     <div class="position-relative mt-5">
-                                                        <input class="form-control ps-5" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Challenges">
+                                                        <input class="border border-dark form-control ps-5 border-1 border-rounded form-control ps-5" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Challenges">
                                                         <span class="bx bx-search font-size-18"></span>
                                                     </div>
                                                 </form>
