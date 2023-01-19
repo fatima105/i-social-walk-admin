@@ -62,7 +62,7 @@
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="offset-md-3 col-xl-6 col-6 col-md-6">
+                        <div class="offset-md-3 col-xl-6 col-12 col-md-6">
                             <div class="card">
                                 <div class="card-body">
 
@@ -77,7 +77,7 @@
                                                         </div>
                                                         <div class="card-body">
 
-                                                            <div class="row">
+                                                            <div class="row mb-2">
                                                                 <div class="col-md-12 " style="align-items:center;display:flex;">
                                                                     <div class="mb-3 ">
                                                                         <?php if ($profile_image == '') {
@@ -95,60 +95,50 @@ alt="Header Avatar">';
                                                             </div>
 
 
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold">User Name</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <?php echo $first_name . ' ' . $last_name; ?>
-                                                                        </div>
-                                                                    </div>
+                                                            <div class="row mb-2">
+
+                                                                <div class="col-md-6 text-center " style=" font-weight: bold;">User Name</div>
+                                                                <div class="col-md-6 text-center">
+                                                                    <?php echo $first_name . ' ' . $last_name; ?>
+                                                                </div>
+
+
+                                                            </div>
+
+                                                            <div class="row mb-2">
+
+                                                                <div class="col-sm-12  col-md-6 text-center " style=" font-weight: bold;"> Email</div>
+                                                                <div class="col-sm-12  col-md-6 text-center">
+                                                                    <?php echo $email; ?>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="row mb-2">
+
+                                                                <div class="col-md-6 text-center " style=" font-weight: bold;">Phone No</div>
+                                                                <div class="col-md-6 text-center">
+                                                                    <?php echo $phoneno; ?>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row mb-2">
+
+                                                                <div class="col-md-6 text-center " style=" font-weight: bold;">Device Token</div>
+                                                                <div class="col-md-6 text-center">
+                                                                    <?php echo $device_token; ?>
+
                                                                 </div>
 
                                                             </div>
 
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold"> Email</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <?php echo $email; ?>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                            <div class="row mb-2">
 
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold">Phone No</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <?php echo $phoneno; ?>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="col-md-6  col-12 text-center " style=" font-weight: bold;"> Device Connected</div>
+                                                                <div class="col-md-6 col-12 text-center">
+                                                                    <div class="badge badge-soft-success font-size-12 p-4 "> <?php echo $active_watch; ?></div>
 
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold">Device Token</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <?php echo $device_token; ?>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold"> Device Connected</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12 p-4 "> <?php echo $active_watch; ?></div>
-                                                                        </div>
-                                                                    </div>
                                                                 </div>
 
                                                             </div>
@@ -226,7 +216,7 @@ alt="Header Avatar">';
                                                                 <div class="d-flex align-items-center">
                                                                     <?php if ($image == '') {
 
-                                                                        echo '<div class="icon-badge rounded-circle text-center fs-5 bg-info text-white" style="height:100px; width:100px;">' .
+                                                                        echo '<div class="text-dark rounded-circle text-center fs-5  text-dark" style="height:100px; width:100px;">' .
                                                                             "No Image Uploded" . '</div>';
                                                                     } else {
                                                                         echo '
@@ -422,7 +412,7 @@ alt="Header Avatar">';
                         </div>
                         <div class="col-xl-6 col-12 col-md-6">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body" style="min-height:30vh;">
 
                                     <div class="">
                                         <div class="row mb-2">
@@ -459,14 +449,22 @@ alt="Header Avatar">';
                                                 $query = mysqli_query($conn, $sql);
                                                 if (mysqli_num_rows($query) > 0) {
                                                     while ($row = mysqli_fetch_assoc($query)) { ?>
-
+                                                        <?php $image = $row['image']; ?>
                                                         <?php $challenge_id = $row['challenge_id']; ?>
                                                         <tr>
 
                                                             <td> <?php echo $row['name']; ?>
                                                             <td style="width: 190px;">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                    <?php if ($image == '') {
+
+                                                                        echo '<div class="  text-center fs-5  text-dark" style="height:100px; width:100px;">' .
+                                                                            "No Image Uploded" . '</div>';
+                                                                    } else {
+                                                                        echo '
+<img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $image . '"
+alt="Header Avatar">';
+                                                                    } ?>
                                                                 </div>
                                                             </td>
 
@@ -498,8 +496,8 @@ alt="Header Avatar">';
                                                     }
                                                 } else {
                                                     ?><tr> <?php echo "no record found"; ?>
-
-                                                    <?php  } ?>
+                                                    </tr>
+                                                <?php  } ?>
                                             </tbody>
                                         </table>
                                     </div>

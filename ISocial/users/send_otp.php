@@ -39,7 +39,7 @@ if ($exsist == 1) {
     $subject = "Verifcation Code for i Social Walk User";
     $txt = "Your 4 Digit Code is " . $otp;
     $headers = "From:mu63668@gmail.com" . "\r\n" .
-        "CC:mu63668@gmail.com";
+        "CC:fatimagull863@gmail.com";
 
 
 

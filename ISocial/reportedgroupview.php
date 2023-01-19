@@ -5,8 +5,9 @@
 <body>
     <div id="layout-wrapper">
         <?php include('include/header.php'); ?>
-
-
+        <?php include('include/functions.php'); ?>
+        <?php $reported_group = $_GET['id'];
+        ?>
         <div class="vertical-menu">
 
             <!-- LOGO -->
@@ -48,217 +49,147 @@
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="offset-md-3 col-xl-6 col-6 col-md-6">
+                        <div class="offset-md-3 col-xl-6 col-12 col-md-6">
                             <div class="card">
                                 <div class="card-body">
 
                                     <div class="">
                                         <div class="row mb-2">
-                                            <div class="col-xl-12 col-md-112 col-12">
+                                            <div class="col-xl-12 col-md-12 col-12">
                                                 <div class="pb-3 pb-xl-0">
 
                                                     <div class="card">
                                                         <div class="card-header">
-                                                            <h3 class="card-title mb-0 text-center">Reported Group </h4>
+                                                            <h3 class="card-title mb-0 text-center">Reported group </h4>
                                                         </div>
                                                         <div class="card-body">
 
-                                                            <div class="row">
-                                                                <div class="col-md-12">
+
+                                                            <?php $sql = "SELECT *
+                                                          FROM user_groups
+                                                          INNER JOIN report_group ON user_groups.id = report_group.report_group where report_group='$reported_group'";
+                                                            $query1 = mysqli_query($conn, $sql);
+                                                            while ($row = mysqli_fetch_assoc($query1)) {
+                                                            ?>
+                                                                <div class="row">
+
+
+
+                                                                    <div class="col-md-6 col-12 text-center text-bold mb-2 " style=" font-weight: bold;">Image</div>
+                                                                    <div class="col-md-6 col-12  text-center  mb-2">
+                                                                        <img class="rounded-circle avatar-sm" <?php echo ' src="api/' . $row['image']; ?> alt="">
+
+
+
+                                                                    </div>
 
                                                                 </div>
 
-                                                            </div>
+                                                                <div class="row">
 
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold">Image</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
+                                                                    <div class="col-md-6 col-sm-12 mb-2 mt-2 text-center" style=" font-weight: bold;">Group Type</div>
+                                                                    <div class="col-md-6 col-sm-12 text-center ">
+                                                                        <div class="badge badge-soft-danger font-size-12 mb-2 mt-2">
+                                                                            <?php echo $row['group_privacy']; ?>
                                                                         </div>
+
+
                                                                     </div>
                                                                 </div>
 
-                                                            </div>
-
-
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold">Group Name</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            John XYZ
-                                                                        </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6 col-sm-12 text-center mb-2 " style=" font-weight: bold;">Group Name</div>
+                                                                    <div class="col-md-6 col-sm-12 text-center text-bold mb-2">
+                                                                        <?php echo  $row['name']; ?>
                                                                     </div>
+
                                                                 </div>
 
-                                                            </div>
 
 
 
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold"> Group Privacy</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12">Public</div>
+                                                                <div class="row">
+
+                                                                    <div class="col-md-6 text-center text-bold mb-2" style=" font-weight: bold;"> Comments</div>
+                                                                    <div class="col-md-6 text-center">
+                                                                        <div class="badge badge-soft-danger font-size-12  mb-2">
+                                                                            <?php echo $row['comments']; ?>
                                                                         </div>
+
                                                                     </div>
+
                                                                 </div>
+                                                                <div class="row">
 
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold">Group Members</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <div class="avatar-group">
-                                                                                <div class="avatar-group-item">
-                                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="avatar-group-item">
-                                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                                    </a>
-                                                                                </div>
+                                                                    <div class="col-md-6 col-12  text-center text-bold" style=" font-weight: bold;"> Reported By</div>
+                                                                    <div class="col-md-6 col-12 text-center">
+                                                                        <div class="badge badge-soft-danger font-size-12">
 
-                                                                                <div class="avatar-group-item">
-                                                                                    <a data-bs-toggle="modal" data-bs-target="#myModal" href="javascript: void(0);" class="d-inline-block">
-                                                                                        <div class="avatar-sm">
-                                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                                A
-                                                                                            </span>
-                                                                                        </div>
+                                                                            <?php $user_id = $row['reported_by'];
+                                                                            echo getname($user_id); ?>
+                                                                        </div>
 
+                                                                    </div>
 
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="avatar-group-item">
-                                                                                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
-                                                                                        <div class="avatar-sm">
-                                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                                + 2
-                                                                                            </span>
-                                                                                        </div>
-
-
-                                                                                    </a>
-                                                                                </div>
+                                                                </div>
+                                                                <?php
+                                                                $SQA = "SELECT * from user_groups where id=$reported_group";
+                                                                $QUERY = mysqli_query($conn, $SQA);
+                                                                while ($row = mysqli_fetch_assoc($QUERY)) {
+                                                                    $status = $row['status'];
+                                                                    if ($status == "Active") { ?>
+                                                                        <div class="row mt-3">
+                                                                            <div class="offset-md-9 offset-9 col-2">
+                                                                                <a href="groups\block.php?reportedgroupid=<?php echo $reported_group; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
+                                                                                    Block
+                                                                                </a>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold"> Comments</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">XYZ</div>
+                                                                    <?php } else { ?>
+                                                                        <div class="row mt-3">
+                                                                            <div class="offset-md-9 offset-9 col-2">
+                                                                                <a href="groups\active.php?reportedgroupid=<?php echo $reported_group; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
+                                                                                    Active
+                                                                                </a>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
 
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold"> Reported By</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">ABC</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="offset-md-9 offset-9 col-2">
-                                                                    <input onclick="change()" type="button" class="btn btn-sm bg-primary text-white" value="Blocked" id="myButton1"></input>
-                                                                </div>
-                                                            </div>
-
+                                                                <?php   }
+                                                                } ?>
                                                         </div>
-                                                        <!-- end card body -->
+
                                                     </div>
+
+                                                    <!-- end card body -->
                                                 </div>
                                             </div>
-
-
                                         </div>
+
 
                                     </div>
 
-
-
                                 </div>
+
+
+
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title text-center">Group Members</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <?php for ($i = 0; $i < 4; $i++) { ?>
-
-                                        <div class="row">
-
-                                            <div class="col-12" style="display:flex">
-                                                <div class="col-6 text-center">
-                                                    Fatima
-                                                </div>
-                                                <div class="col-6 text-center">
-
-                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-12" style="display:flex">
-                                                <div class="col-6 text-center">
-                                                    John
-                                                </div>
-                                                <div class="col-6 text-center">
-
-                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="hr mb-2 mt-2">
-
-                                        </div>
-                                    <?php } ?>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-
-                    <!-- end row -->
-
                 </div>
-                <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
 
-            <?php include('include/footer.php'); ?>
+
+            <?php } ?>
+
+            <!-- end row -->
+
+            </div>
+            <!-- container-fluid -->
         </div>
-        <!-- end main content-->
+        <!-- End Page-content -->
+
+        <?php include('include/footer.php'); ?>
+    </div>
+    <!-- end main content-->
 
     </div>
     <!-- END layout-wrapper -->

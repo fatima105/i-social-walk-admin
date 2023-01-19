@@ -39,24 +39,30 @@
 
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a href="chat.php">
                 <i class="bx bx-chat icon nav-icon"></i>
                 <span class="menu-item" data-key="t-todo">Chat</span>
 
             </a>
+        </li> -->
+        <li>
+            <a href="reportedusers.php">
+                <i class="bx bx-block icon nav-icon"></i>
+                <span class=" menu-item" data-key="t-filemanager">Reported Users</span>
+            </a>
         </li>
         <li>
-
-            <a href="javascript: void(0);" class="has-arrow">
+            <a href="reportedgroups.php">
                 <i class="bx bx-block icon nav-icon"></i>
-                <span class="menu-item" data-key="t-tables">Report</span>
+                <span class=" menu-item" data-key="t-filemanager">Reported Groups</span>
             </a>
-            <ul class="sub-menu" aria-expanded="false">
-                <li><a href="reportedusers.php" data-key="t-basic-tables">Report Users</a></li>
-                <!-- <li><a href="reportedgroups.php" data-key="t-advanced-tables">Report Groups</a></li> -->
-                <!-- <li><a href="reportedchallenges.php" data-key="t-advanced-tables">Report Challenges</a></li> -->
-            </ul>
+        </li>
+        <li>
+            <a href="reportedchallenges.php">
+                <i class="bx bx-block icon nav-icon"></i>
+                <span class=" menu-item" data-key="t-filemanager">Reported Challenges</span>
+            </a>
         </li>
         <li>
             <a href="settings.php">

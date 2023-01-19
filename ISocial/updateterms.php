@@ -97,9 +97,9 @@ if (isset($_POST['update'])) {
                                     <div class="text-center mt-2">
                                         <h5>Update Terms & Conditions!</h5>
                                     </div>
-                                    <div class="p-2 mt-4">
+                                    <div id="forms" class="p-2 mt-4" style="visibility:hidden;">
                                         <form action="" class="form" id="form" method="post">
-                                            <input type="text" name="id" value=" <?php echo $id; ?>" />
+                                            <input type="hidden" name="id" value=" <?php echo $id; ?>" />
                                             <textarea required rows="20" name="terms"><?php echo $terms; ?></textarea>
                                             <div class="pull-right mr-40 mt-10">
                                                 <button type="submit" name="update" id="submit" class="btn btn-success mr-10 mt-30">Submit</button>
@@ -154,6 +154,9 @@ if (isset($_POST['update'])) {
     <?php include('include/footerscripts.php'); ?>
     <script src="https://cdn.tiny.cloud/1/yo9e1ts5xtf3knyjm2uck5okrzzgtapaef9txyy5qk62bfyp/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
+        $(window).load(function() {
+            $('#forms').css('visibility', 'visible');
+        });
         tinymce.init({
             selector: 'textarea',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',

@@ -2,7 +2,9 @@
 <html lang="en">
 
 <?php include('include/scripts.php');
-include('include/connection.php'); ?>
+include('include/connection.php');
+session_start();
+?>
 
 <body>
 

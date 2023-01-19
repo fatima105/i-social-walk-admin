@@ -74,7 +74,7 @@ include('include/connection.php'); ?>
                                                     <h5>All Groups</h5>
                                                 </div>
                                             </div>
-                                            <div class=" col-xl-3 col-md-12">
+                                            <div class=" col-offset-3 col-xl-6 col-md-12">
                                                 <div class="pb-3 pb-xl-0">
                                                     <form class="email-search">
                                                         <div class="position-relative mt-5">

@@ -73,13 +73,14 @@ if (isset($_SESSION['id'])) {
                             }
                         }
                     }
-                    if ($profile_image1 == '') {
-                        echo '<div class="icon-badge rounded-circle text-center p-3 fs-5 bg-info text-white" style="height:50px; width:50px;">' . strtoupper(substr($first_name, 0, 1)) . '</div>';
-                    } else {
-                        echo '
-                        <img class="rounded-circle header-profile-user " src="api/' . $profile_image1 . '"
-                        alt="Header Avatar">';
-                    } ?>
+                    // if ($profile_image1 == '') {
+                    //     echo '<div class="icon-badge rounded-circle text-center p-3 fs-5 bg-info text-white" style="height:50px; width:50px;">' . strtoupper(substr($first_name, 0, 1)) . '</div>';
+                    // } else {
+                    //     echo '
+                    //     <img class="rounded-circle header-profile-user " src="api/' . $profile_image1 . '"
+                    //     alt="Header Avatar">';
+                    // } 
+                    ?>
                     <span class="d-none d-xl-inline-block ms-2 fw-medium font-size-15"><?php echo  $first_name . '  ' . $last_name; ?></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">

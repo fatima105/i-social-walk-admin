@@ -77,7 +77,7 @@
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="offset-md-3 col-xl-6 col-6 col-md-6">
+                        <div class="offset-md-3 col-xl-6 col-12 col-md-6">
                             <div class="card">
                                 <div class="card-body">
 
@@ -92,7 +92,7 @@
                                                         </div>
                                                         <div class="card-body">
 
-                                                            <div class="row">
+                                                            <div class="row mb-2">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3 text-center">
                                                                         <?php if ($image == '') {
@@ -110,153 +110,135 @@ alt="Header Avatar">';
                                                             </div>
 
 
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-12 text-start text-bold"> Name</div>
-                                                                        <div class="col-md-6 col-12 text-start">
-                                                                            <?php echo $first_name . ' ' . $last_name; ?>
-                                                                        </div>
-                                                                    </div>
+                                                            <div class="row mb-2">
+
+                                                                <div class="col-md-6 col-12 text-center " style=" font-weight: bold;"> Name</div>
+                                                                <div class="col-md-6 col-12 text-center">
+                                                                    <?php echo $first_name . ' ' . $last_name; ?>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="row mb-2">
+
+                                                                <div class="col-md-6 col-12  text-center " style=" font-weight: bold;">Calories Burnt</div>
+                                                                <div class="col-md-6 col-12 text-center">
+                                                                    <div class="badge badge-soft-success font-size-12"> <?php echo $calories_burnt; ?></div>
+
                                                                 </div>
 
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">Calories Burnt</div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12"> <?php echo $calories_burnt; ?></div>
-                                                                        </div>
+                                                            <div class="row mb-2">
+
+                                                                <div class="col-md-6 col-12  text-center " style=" font-weight: bold;">Distance Covered</div>
+                                                                <div class="col-md-6 col-12 text-center">
+                                                                    <div class=" font-size-14"><?php echo $distance_covered; ?></div>
+
+
+                                                                </div>
+                                                                <div class="row mb-2">
+
+                                                                    <div class="col-md-6 col-12  text-center " style=" font-weight: bold;">Time Taken</div>
+                                                                    <div class="col-md-6 col-12 text-center">
+                                                                        <div class=" font-size-14"> <?php echo $distance_covered; ?></div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="row mb-2">
+
+                                                                    <div class="col-md-6 col-12  text-center " style=" font-weight: bold;">Average Speed</div>
+                                                                    <div class="col-md-6 col-12 text-center">
+                                                                        <div class="badge badge-soft-danger font-size-12"><?php echo $avg_speed; ?></div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <div class="row mb-2">
+
+                                                                    <div class="col-md-6 col-12  text-center " style=" font-weight: bold;">Total Steps</div>
+                                                                    <div class="col-md-6 col-12 text-center">
+                                                                        <div class="badge badge-soft-danger font-size-12"><?php echo $steps; ?></div>
+                                                                    </div>
+
+
+                                                                </div>
+
+
+                                                                <div class="row mb-2">
+
+                                                                    <div class="col-md-6 col-12  text-center " style=" font-weight: bold;">Average Pace</div>
+                                                                    <div class="col-md-6 col-12 text-center">
+                                                                        <div class="badge badge-soft-danger font-size-12"><?php echo $avg_pace; ?></div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <div class="row mb-2">
+
+                                                                    <div class="col-md-6 col-12  text-center " style=" font-weight: bold;">Date </div>
+                                                                    <div class="col-md-6 col-12 text-center">
+                                                                        <div class="badge badge-soft-success font-size-12"><?php echo $date; ?></div>
                                                                     </div>
                                                                 </div>
 
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">distance Covered</div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="text-bold font-size-14"><?php echo $distance_covered; ?></div>
-                                                                        </div>
-                                                                    </div>
+
+                                                                <div>
+
                                                                 </div>
 
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">Time Taken</div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="text-bold font-size-14"> <?php echo $distance_covered; ?></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">Average Speed</div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12"><?php echo $avg_speed; ?></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">Total Steps</div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12"><?php echo $steps; ?></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">Average Pace</div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12"><?php echo $avg_pace; ?></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 col-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 col-6  text-start text-bold">Date </div>
-                                                                        <div class="col-md-6 col-6 text-start">
-                                                                            <div class="badge badge-soft-success font-size-12"><?php echo $date; ?></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div>
-
-                                                            </div>
-
+                                                            <!-- end card body -->
                                                         </div>
-                                                        <!-- end card body -->
                                                     </div>
                                                 </div>
+
+
                                             </div>
-
-
                                         </div>
+
+
+
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
+
+
+
+                        <!-- end row -->
+
                     </div>
-
-
-
-                    <!-- end row -->
-
+                    <!-- container-fluid -->
                 </div>
-                <!-- container-fluid -->
+                <!-- End Page-content -->
+
+                <?php include('include/footer.php'); ?>
             </div>
-            <!-- End Page-content -->
+            <!-- end main content-->
 
-            <?php include('include/footer.php'); ?>
         </div>
-        <!-- end main content-->
-
-    </div>
-    <!-- END layout-wrapper -->
+        <!-- END layout-wrapper -->
 
 
 
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
 
-    <!-- chat offcanvas -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasActivity" aria-labelledby="offcanvasActivityLabel">
-        <div class="offcanvas-header border-bottom">
-            <h5 id="offcanvasActivityLabel">Offcanvas right</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <!-- chat offcanvas -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasActivity" aria-labelledby="offcanvasActivityLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 id="offcanvasActivityLabel">Offcanvas right</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                ...
+            </div>
         </div>
-        <div class="offcanvas-body">
-            ...
-        </div>
-    </div>
 
 
-    <?php include('include/footerscripts.php'); ?>
+        <?php include('include/footerscripts.php'); ?>
 
 </body>
 

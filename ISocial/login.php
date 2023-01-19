@@ -95,9 +95,7 @@ include 'include/scripts.php';
                                             </div>
 
                                             <div class="mb-3">
-                                                <!-- <div class="float-end">
-                                                    <a href="recover.php" class="text-muted text-decoration-underline">Forgot password?</a>
-                                                </div> -->
+
                                                 <label class="form-label" for="password-input">password</label>
                                                 <div class="position-relative auth-pass-inputgroup input-custom-icon">
                                                     <span class="bx bx-lock-alt"></span>
@@ -112,7 +110,9 @@ include 'include/scripts.php';
                                                 <input type="checkbox" class="form-check-input" id="auth-remember-check">
                                                 <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                             </div>
-
+                                            <div class="float-end">
+                                                <a href="recover.php" class="text-muted text-decoration-underline">Forgot password?</a>
+                                            </div>
                                             <div class="mt-3">
                                                 <button name="add" class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
                                             </div>

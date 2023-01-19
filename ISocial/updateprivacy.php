@@ -20,21 +20,23 @@ $finalquery = mysqli_query($conn, $sqlfinal); {
 if (isset($_POST['submit'])) {
     $id = $_POST['id'];
     $privacy_text = $_POST['privacytext'];
-    $sql = "UPDATE privacy SET
+    echo $sql = "UPDATE privacy SET
          privacytext='$privacy_text'
-       WHERE id='$privacyid'";
+       WHERE id='$id'";
+
+
 
     $query = mysqli_query($conn, $sql);
     if ($query) {
         // $_SESSION['status_text'] = "Updated Successfully";
         // $_SESSION['status_title'] = "";
         // $_SESSION['status_code'] = "success";
-        header('location: privacypolicy.php?id=$privacyid');
+        header('location: privacypolicy.php?id=' . $id);
     } else {
         // $_SESSION['status_text'] = "Privacy Policy Not Updated";
         // $_SESSION['status_title'] = "";
         // $_SESSION['status_code'] = "error";
-        header('location: privacypolicy.php?id=$privacyid');
+        header('location: privacypolicy.php?id=' . $id);
     }
 }
 ?>
@@ -96,7 +98,7 @@ if (isset($_POST['submit'])) {
                                     <div class="text-center mt-2">
                                         <h5>Update Privacy Policy!</h5>
                                     </div>
-                                    <div class="">
+                                    <div id="forms" class="" style="visibility:hidden;">
                                         <form action="" class="form" id="form" method="post">
                                             <input type="hidden" name="id" value=" <?php echo $privacyid; ?>" />
                                             <textarea required rows="20" name="privacytext"><?php echo $privacy_text ?></textarea>
@@ -158,6 +160,9 @@ if (isset($_POST['submit'])) {
             selector: 'textarea',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+        $(window).load(function() {
+            $('#forms').css('visibility', 'visible');
         });
     </script>
 </body>

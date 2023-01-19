@@ -62,8 +62,8 @@
                                                     <h5>All Users</h5>
                                                 </div>
                                             </div>
-                                            <div class=" col-xl-3 col-md-12">
-                                                <div class="pb-3 pb-xl-0">
+                                            <div class="col-offset-3 col-xl-6 col-md-12">
+                                                <div class=" pb-xl-0">
                                                     <form class="email-search">
                                                         <div class="position-relative mt-5">
                                                             <input class="border border-dark form-control ps-5 border-1" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Users">

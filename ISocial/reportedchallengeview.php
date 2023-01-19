@@ -5,8 +5,9 @@
 <body>
     <div id="layout-wrapper">
         <?php include('include/header.php'); ?>
-
-
+        <?php include('include/functions.php'); ?>
+        <?php $reported_challenge = $_GET['id'];
+        ?>
         <div class="vertical-menu">
 
             <!-- LOGO -->
@@ -48,13 +49,13 @@
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="offset-md-3 col-xl-6 col-6 col-md-6">
+                        <div class="offset-md-3 col-xl-6 col-12 col-md-6">
                             <div class="card">
                                 <div class="card-body">
 
                                     <div class="">
                                         <div class="row mb-2">
-                                            <div class="col-xl-12 col-md-112 col-12">
+                                            <div class="col-xl-12 col-md-12 col-12">
                                                 <div class="pb-3 pb-xl-0">
 
                                                     <div class="card">
@@ -63,48 +64,43 @@
                                                         </div>
                                                         <div class="card-body">
 
-                                                            <div class="row">
-                                                                <div class="col-md-12">
 
-                                                                </div>
+                                                            <?php $sql = "SELECT *
+                                                          FROM challenges
+                                                          INNER JOIN report_challenge ON challenges.id = report_challenge.report_challenge where report_challenge='$reported_challenge'";
+                                                            $query1 = mysqli_query($conn, $sql);
+                                                            while ($row = mysqli_fetch_assoc($query1)) {
+                                                            ?>
+                                                                <div class="row">
 
-                                                            </div>
 
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold">Image</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
 
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                    <div class="col-md-6 col-12 text-center text-bold mb-2 " style=" font-weight: bold;">Image</div>
+                                                                    <div class="col-md-6 col-12  text-center  mb-2">
+                                                                        <img class="rounded-circle avatar-sm" <?php echo ' src="api/' . $row['image']; ?> alt="">
 
-                                                            </div>
 
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="mb-3" style="display:flex;">
-                                                                        <div class="col-md-6 text-center text-bold">Challenge Type</div>
-                                                                        <div class="col-md-6 text-start">
-                                                                            <div class="badge badge-soft-danger font-size-12">
-                                                                                Public
-                                                                            </div>
-                                                                        </div>
+
                                                                     </div>
 
                                                                 </div>
-
 
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="mb-3" style="display:flex;">
-                                                                            <div class="col-md-6 text-center text-bold">Challenge Name</div>
-                                                                            <div class="col-md-6 text-start">
-                                                                                John XYZ
-                                                                            </div>
+
+                                                                    <div class="col-md-6 col-sm-12 mb-2 mt-2 text-center" style=" font-weight: bold;">Challenge Type</div>
+                                                                    <div class="col-md-6 col-sm-12 text-center ">
+                                                                        <div class="badge badge-soft-danger font-size-12 mb-2 mt-2">
+                                                                            <?php echo $row['challenge_type']; ?>
                                                                         </div>
+
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-6 col-sm-12 text-center mb-2 " style=" font-weight: bold;">Challenge Name</div>
+                                                                    <div class="col-md-6 col-sm-12 text-center text-bold mb-2">
+                                                                        <?php echo  $row['name']; ?>
                                                                     </div>
 
                                                                 </div>
@@ -113,184 +109,116 @@
 
 
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="mb-3" style="display:flex;">
-                                                                            <div class="col-md-6 text-center text-bold">Challenge Members</div>
-                                                                            <div class="col-md-6 text-start">
-                                                                                <div class="avatar-group">
-                                                                                    <div class="avatar-group-item">
-                                                                                        <a href="javascript: void(0);" class="d-inline-block">
-                                                                                            <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div class="avatar-group-item">
-                                                                                        <a href="javascript: void(0);" class="d-inline-block">
-                                                                                            <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                                        </a>
-                                                                                    </div>
 
-                                                                                    <div class="avatar-group-item">
-                                                                                        <a data-bs-toggle="modal" data-bs-target="#myModal" href="javascript: void(0);" class="d-inline-block">
-                                                                                            <div class="avatar-sm">
-                                                                                                <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                                    A
-                                                                                                </span>
-                                                                                            </div>
-
-
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div class="avatar-group-item">
-                                                                                        <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" href="javascript: void(0);" class="d-inline-block">
-                                                                                            <div class="avatar-sm">
-                                                                                                <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                                    + 2
-                                                                                                </span>
-                                                                                            </div>
-
-
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                    <div class="col-md-6 text-center text-bold mb-2" style=" font-weight: bold;"> Comments</div>
+                                                                    <div class="col-md-6 text-center">
+                                                                        <div class="badge badge-soft-danger font-size-12  mb-2">
+                                                                            <?php echo $row['comments']; ?>
                                                                         </div>
+
                                                                     </div>
 
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="mb-3" style="display:flex;">
-                                                                            <div class="col-md-6 text-center text-bold"> Comments</div>
-                                                                            <div class="col-md-6 text-start">
-                                                                                <div class="badge badge-soft-danger font-size-12">XYZ</div>
+
+                                                                    <div class="col-md-6 col-12  text-center text-bold" style=" font-weight: bold;"> Reported By</div>
+                                                                    <div class="col-md-6 col-12 text-center">
+                                                                        <div class="badge badge-soft-danger font-size-12">
+
+                                                                            <?php $user_id = $row['reported_by'];
+                                                                            echo getname($user_id); ?>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                                <?php
+                                                                $SQA = "SELECT * from challenges where id=$reported_challenge";
+                                                                $QUERY = mysqli_query($conn, $SQA);
+                                                                while ($row = mysqli_fetch_assoc($QUERY)) {
+                                                                    $status = $row['status'];
+                                                                    if ($status == "Active") { ?>
+                                                                        <div class="row mt-3">
+                                                                            <div class="offset-md-9 offset-9 col-2">
+                                                                                <a href="challenges\block.php?reportedchallengeid=<?php echo $reported_challenge; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
+                                                                                    Block
+                                                                                </a>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="mb-3" style="display:flex;">
-                                                                            <div class="col-md-6 text-center text-bold"> Reported By</div>
-                                                                            <div class="col-md-6 text-start">
-                                                                                <div class="badge badge-soft-danger font-size-12">ABC</div>
+                                                                    <?php } else { ?>
+                                                                        <div class="row mt-3">
+                                                                            <div class="offset-md-9 offset-9 col-2">
+                                                                                <a href="challenges\active.php?reportedchallengeid=<?php echo $reported_challenge; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
+                                                                                    Active
+                                                                                </a>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
 
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="offset-md-9 offset-9 col-2">
-                                                                        <input onclick="change()" type="button" class="btn btn-sm bg-primary text-white" value="Blocked" id="myButton1"></input>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <!-- end card body -->
+                                                                <?php   }
+                                                                } ?>
                                                         </div>
+
                                                     </div>
+
+                                                    <!-- end card body -->
                                                 </div>
-
-
                                             </div>
-
                                         </div>
 
 
-
                                     </div>
+
                                 </div>
+
+
+
                             </div>
                         </div>
-
-
-                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title text-center">Challenge Members</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <?php for ($i = 0; $i < 4; $i++) { ?>
-
-                                            <div class="row">
-
-                                                <div class="col-12" style="display:flex">
-                                                    <div class="col-6 text-center">
-                                                        Fatima
-                                                    </div>
-                                                    <div class="col-6 text-center">
-
-                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-12" style="display:flex">
-                                                    <div class="col-6 text-center">
-                                                        John
-                                                    </div>
-                                                    <div class="col-6 text-center">
-
-                                                        <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="hr mb-2 mt-2">
-
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-
-                        <!-- end row -->
-
                     </div>
-                    <!-- container-fluid -->
                 </div>
-                <!-- End Page-content -->
 
-                <?php include('include/footer.php'); ?>
+
+            <?php } ?>
+
+            <!-- end row -->
+
             </div>
-            <!-- end main content-->
-
+            <!-- container-fluid -->
         </div>
-        <!-- END layout-wrapper -->
+        <!-- End Page-content -->
+
+        <?php include('include/footer.php'); ?>
+    </div>
+    <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
 
 
 
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
 
-        <!-- chat offcanvas -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasActivity" aria-labelledby="offcanvasActivityLabel">
-            <div class="offcanvas-header border-bottom">
-                <h5 id="offcanvasActivityLabel">Offcanvas right</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                ...
-            </div>
+    <!-- chat offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasActivity" aria-labelledby="offcanvasActivityLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 id="offcanvasActivityLabel">Offcanvas right</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <div class="offcanvas-body">
+            ...
+        </div>
+    </div>
 
 
-        <?php include('include/footerscripts.php'); ?>
-        <script type="text/javascript">
-            function change() // no ';' here
-            {
-                if (this.value == "Close Curtain") this.value = "Open Curtain";
-                else this.value = "Close Curtain";
-            }
-        </script>
+    <?php include('include/footerscripts.php'); ?>
+    <script type="text/javascript">
+        function change() // no ';' here
+        {
+            if (this.value == "Close Curtain") this.value = "Open Curtain";
+            else this.value = "Close Curtain";
+        }
+    </script>
 </body>
 
 

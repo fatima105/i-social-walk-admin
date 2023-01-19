@@ -16,7 +16,7 @@ privacytext='$privacytext',
    WHERE id='$id'";
     $query = mysqli_query($conn, $sql);
     if ($query) {
-        $_SESSION['status_text'] = "privacy olicy  Updated Successfully";
+        $_SESSION['status_text'] = "privacy policy  Updated Successfully";
         $_SESSION['status_title'] = "";
         $_SESSION['status_code'] = "success";
         header('location: ../privacypolicy.php');

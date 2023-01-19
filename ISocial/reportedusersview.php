@@ -60,13 +60,14 @@
 
                                                     <div class="card">
                                                         <div class="card-header">
-                                                            <h3 class="card-title mb-0 text-center">Blocked User </h4>
+                                                            <h3 class="card-title mb-0 text-center">Block User </h4>
                                                         </div>
 
                                                         <?php $id = $_GET['id'];
                                                         $sql = "SELECT *
                                                         FROM users
                                                         INNER JOIN reportusers ON users.id = reportusers.report_user where report_user='$id'";
+
                                                         $query = mysqli_query($conn, $sql);
                                                         if ($query) {
                                                             while ($row = mysqli_fetch_assoc($query)) {
@@ -185,14 +186,30 @@
                                                                 </div>
 
                                                             </div>
-                                                            <!-- <div class="row">
-                                                                <div class="offset-md-9 offset-9 col-2">
-                                                                    <a href="users\blockuser.php?reporteduserid=<?php echo $id; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
-                                                                        Block
-                                                                    </a>
-                                                                </div>
-                                                            </div> -->
+                                                            <?php
+                                                            $SQA = "SELECT * from users where id=$id";
+                                                            $QUERY = mysqli_query($conn, $SQA);
+                                                            while ($row = mysqli_fetch_assoc($QUERY)) {
+                                                                $status = $row['status'];
+                                                                if ($status == "Active") { ?>
+                                                                    <div class="row">
+                                                                        <div class="offset-md-9 offset-9 col-2">
+                                                                            <a href="users\blockuser.php?reporteduserid=<?php echo $id; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
+                                                                                Block
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                <?php } else { ?>
+                                                                    <div class="row">
+                                                                        <div class="offset-md-9 offset-9 col-2">
+                                                                            <a href="users\activeuser.php?reporteduserid=<?php echo $id; ?>" type="button" class="btn btn-sm bg-primary text-white" id="myButton1">
+                                                                                Active
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
 
+                                                            <?php   }
+                                                            } ?>
                                                         </div>
                                                         <!-- end card body -->
                                                     </div>

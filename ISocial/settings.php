@@ -7,40 +7,42 @@ include('include/connection.php');
 include('include/scripts.php');
 
 include('include/header.php');
-if (isset($_POST['Update'])) {
-    $newpassword = $_POST['newpassword'];
-    $confirmpassword = $_POST['confirmpassword'];
 
-    $oldpassword = $_POST['oldpassword'];
-    $opass = md5($oldpassword);
+if (isset($_POST['updatepass'])) {
+    $old = $_POST['old_password'];
+    $OLDPASS = md5($old);
+    $sql = "Select * from users where password='$OLDPASS' AND id='$id'";
 
-    $sql = "select * from users where email = '$_SESSION[email]' AND password='$opass'";
     $query = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($query) > 0) {
+    if (mysqli_num_rows($query) == 1) {
+        $new_password = $_POST['new_password'];
+        $confirm_password = $_POST['confirm_password'];
 
+        if ($new_password == $confirm_password) {
 
-        $pass = md5($newpassword);
-        $sqll = "UPDATE users SET password='$pass' where email = '$_SESSION[email]'";
+            $pass = md5($_POST['new_password']);
+            $sql = "Update users SET password='$pass' where id='$id'";
 
-        $queryl = mysqli_query($conn, $sqll);
-        if ($queryl) {
+            $query = mysqli_query($conn, $sql);
 
-            $_SESSION['status_text'] = "Password Updated";
-            $_SESSION['status_title'] = "Password Updated";
-            $_SESSION['status_code'] = "success";
+            if ($query) {
+
+                $_SESSION['status_text'] = "Password Updated";
+                $_SESSION['status_title'] = "Success";
+                $_SESSION['status_code'] = "success";
+            }
         } else {
-            echo 'password not updated';
-            // $_SESSION['status_text']="Otp Not Matched";
-            // $_SESSION['status_title']="Error";
-            // $_SESSION['status_code']="error";
-            // header("location:../verify-otp.php");
+
+            $_SESSION['status_text'] = "New Password & Confirm Password Doesnot Match";
+            $_SESSION['status_title'] = "Error";
+            $_SESSION['status_code'] = "error";
         }
     } else {
-        $_SESSION['status_text'] = "error";
-        $_SESSION['status_title'] = "Old Password Not Matched";
-        $_SESSION['status_code'] = "error";
+        $_SESSION['status_text'] = "Old Password is Wrong";
+        $_SESSION['status_title'] = "Warning";
+        $_SESSION['status_code'] = "warning";
     }
-}
+} ?>
 ?>
 
 <body>
@@ -105,19 +107,19 @@ if (isset($_POST['Update'])) {
                                         <div class="row mb-4">
                                             <label for="horizontal-email-input" class="col-sm-3 col-form-label">Old Password</label>
                                             <div class="col-sm-9">
-                                                <input required type="password" name="oldpassword" class="form-control" id="horizontal-email-input" />
+                                                <input required type="password" name="old_password" class="form-control" id="horizontal-email-input" />
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-email-input" class="col-sm-3 col-form-label">New Password</label>
                                             <div class="col-sm-9">
-                                                <input required type="password" name="newpassword" class="form-control" id="horizontal-email-input" />
+                                                <input required type="password" name="new_password" class="form-control" id="horizontal-email-input" />
                                             </div>
                                         </div>
                                         <div class="row mb-4">
                                             <label for="horizontal-password-input" class="col-sm-3 col-form-label">Confirm Password</label>
                                             <div class="col-sm-9">
-                                                <input required type="password" name="confirmpassword" class="form-control" id="horizontal-password-input" />
+                                                <input required type="password" name="confirm_password" class="form-control" id="horizontal-password-input" />
                                             </div>
                                         </div>
 
@@ -129,7 +131,7 @@ if (isset($_POST['Update'])) {
 
 
                                                 <div>
-                                                    <button name="Update" type="submit" class="btn btn-primary  w-md">
+                                                    <button name="updatepass" type="submit" class="btn btn-primary  w-md">
                                                         Update Password
                                                     </button>
                                                 </div>

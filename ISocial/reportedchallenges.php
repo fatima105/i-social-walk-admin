@@ -5,7 +5,7 @@
 <body>
     <div id="layout-wrapper">
         <?php include('include/header.php'); ?>
-
+        <?php include('include/functions.php'); ?>
 
         <div class="vertical-menu">
 
@@ -78,27 +78,43 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    for ($i = 0; $i <= 10; $i++) { ?>
+                                                    $sql = "SELECT *
+                                                          FROM challenges
+                                                          INNER JOIN report_challenge ON challenges.id = report_challenge.report_challenge;";
+                                                    $query1 = mysqli_query($conn, $sql);
+                                                    while ($row = mysqli_fetch_assoc($query1)) {
+                                                        $user_id = $row['created_by_user_id'];
+                                                    ?>
 
                                                         <tr>
 
-                                                            <td>Silene Oliveira</td>
+                                                            <td><?php echo $row['name']; ?></td>
 
                                                             <td style="width: 190px;">
                                                                 <div class="d-flex align-items-center">
-                                                                    <img class="rounded-circle avatar-sm" src="assets/images/users/avatar-6.jpg" alt="">
+                                                                    <?php if ($row['image'] == '') {
 
+                                                                        echo '<div class="" style="height:100px; width:100px;">' .
+                                                                            "No Image Uploded" . '</div>';
+                                                                    } else {
+                                                                        echo '
+<img style="height:100px; width:100px;" class="rounded-circle avatar-sm" src="api/' . $row['image'] . '"
+alt="Header Avatar">';
+                                                                    } ?>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <div class="badge badge-soft-success font-size-12"> Zack </div>
+                                                                <div class="badge badge-soft-success font-size-12"> <?php echo getname($user_id); ?></div>
                                                             </td>
                                                             <td>
-                                                                30 Dec,2021
+                                                                <?php echo $row['created_date']; ?>
                                                             </td>
 
-                                                            <td>XYZ</td>
-                                                            <td>Lorem ipsum dolor, nesciunt alias! Iste iure debitis nemo possimus labore quaerat?
+                                                            <td>
+                                                                <?php $user_id = $row['reported_by'];
+                                                                echo getname($user_id); ?>
+                                                            </td>
+                                                            <td> <?php echo $row['comments']; ?>
                                                             <td>
                                                                 <div class="dropdown">
                                                                     <a class="text-muted dropdown-toggle font-size-18" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
@@ -107,7 +123,7 @@
 
                                                                     <div class="dropdown-menu dropdown-menu-end">
 
-                                                                        <a href="reportedchallengeview.php" class="dropdown-item">view</a>
+                                                                        <a href="reportedchallengeview.php?id=<?php echo $row['report_challenge']; ?>" class="dropdown-item">view</a>
 
                                                                     </div>
                                                                 </div>

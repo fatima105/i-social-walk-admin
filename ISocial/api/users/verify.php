@@ -1,13 +1,9 @@
 <?php
 include('../include/connection.php');
-error_reporting(-1);
-ini_set('display_errors', 'On');
-set_error_handler("var_dump");
-$code = rand(2000, 9999);
 $EncodeData = file_get_contents('php://input');
 $DecodeData = json_decode($EncodeData, true);
 $email = $DecodeData['email'];
-
+$code = rand(2000, 9999);
 $message = 0;
 $login = 0;
 $sql = "SELECT email FROM users";
@@ -31,8 +27,8 @@ if ($login == 1) {
     $to = $email;
     $subject = "Verifcation Code for i Social Walk User";
     $txt = "Your 4 Digit Code is " . $code;
-    $headers = "From:fatimagull863@gmail.com";
-
+    $headers = "From:fatimagull863@gmail.com" . "\r\n" .
+        "CC:fatimagull863@gmail.com";
 
 
 
@@ -48,7 +44,7 @@ if ($login == 1) {
         echo json_encode($response);
     } else {
         $response[] = array(
-
+            "code" => $code,
             "message" => 'Error Sending Email',
             "error" => true,
 

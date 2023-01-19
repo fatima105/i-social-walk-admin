@@ -124,7 +124,7 @@ alt="Header Avatar">';
                                             <div class="row">
                                                 <div class="offset-md-8 col-md-6 ">
                                                     <div class="text-right">
-                                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Profile</button>
+                                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Image</button>
                                                     </div>
                                                 </div>
                                             </div>
